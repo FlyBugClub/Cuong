@@ -11,7 +11,7 @@ function btnSignIn_Click()
     
 }
 function validate(){
-    var emailID = document.getElementById("txtEmail").value;
+    var emailID = document.getElementById("txtSignInEmail").value;
     atpos = emailID.indexOf("@");
     dotpos = emailID.lastIndexOf(".");
     if(document.getElementById("txtSignInEmail").value === "")
