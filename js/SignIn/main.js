@@ -3,7 +3,7 @@ var replace_email;
 var validate_check;
 function btnSignIn_Click()
 {
-    validate_check = validate();
+    validate();
     if(validate_check)
     {
         searchByEmail();
@@ -17,19 +17,19 @@ function validate(){
     if(document.getElementById("txtSignInEmail").value === "")
     {
         document.getElementById("txtSignInNote").innerHTML = "*Please enter your email";
-        return false;
+        validate_check = false;
     }
     else if(atpos < 1 || ( dotpos - atpos < 2 ))
     {
         document.getElementById("txtSignInNote").innerHTML = "*Please enter the correct email format";
-        return false;
+        validate_check = false;
     }
     else if(document.getElementById("txtSignInPassword").value === "")
     {
         document.getElementById("txtSignInNote").innerHTML = "*Please enter your password";
-        return false;
+        validate_check =  false;
     }
-    else return true;
+    else validate_check =  true;
 }
 function searchByEmail() {
     replace_email = document.getElementById("txtSignInEmail").value.replace(/\./g,',');
