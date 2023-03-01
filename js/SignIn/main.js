@@ -3,7 +3,32 @@ var replace_email;
 function btnSignIn_Click()
 {
     
-    searchByEmail();
+    if(validate())
+    {
+        searchByEmail();
+    }
+    
+}
+function validate(){
+    var emailID = document.getElementById("txtEmail").value;
+    atpos = emailID.indexOf("@");
+    dotpos = emailID.lastIndexOf(".");
+    if(document.getElementById("txtSignInEmail").value === "")
+    {
+        document.getElementById("txtSignInNote").innerHTML = "*Please enter your email";
+        return false;
+    }
+    else if(atpos < 1 || ( dotpos - atpos < 2 ))
+    {
+        document.getElementById("txtSignInNote").innerHTML = "*Please enter the correct email format";
+        return false;
+    }
+    else if(document.getElementById("txtSignInPassword").value === "")
+    {
+        document.getElementById("txtSignInNote").innerHTML = "*Please enter your password";
+        return false;
+    }
+    else return true;
 }
 function searchByEmail() {
     replace_email = document.getElementById("txtSignInEmail").value.replace(/\./g,',');
