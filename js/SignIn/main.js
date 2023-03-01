@@ -1,9 +1,10 @@
 const URL = "https://digi27.azurewebsites.net/api/healthies";
 var replace_email;
+var validate_check;
 function btnSignIn_Click()
 {
-    alert(validate());
-    if(validate())
+    validate_check = validate();
+    if(validate_check)
     {
         searchByEmail();
     }
