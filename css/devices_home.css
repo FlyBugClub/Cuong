@@ -1,0 +1,155 @@
+.scroltable-wrapper {
+  position: relative;
+}
+.scroltable-container {
+  overflow: auto;
+}
+.scroltable-nav {
+  display: none;
+  position: absolute;
+  width: 60px;
+  height: 100%;
+  cursor: pointer;
+}
+.scroltable-nav.scroltable-nav-left {
+  left: 0;
+  background: url(images/arrow-left.png) no-repeat 10px center,
+    -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
+  background: url(images/arrow-left.png) no-repeat 10px center,
+    -moz-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+  background: url(images/arrow-left.png) no-repeat 10px center,
+    -ms-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+  background: url(images/arrow-left.png) no-repeat 10px center,
+    -o-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+  background: url(images/arrow-left.png) no-repeat 10px center,
+    linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+}
+.scroltable-nav.scroltable-nav-right {
+  right: 0;
+  background: url(images/arrow-right.png) no-repeat right 10px center,
+    -webkit-linear-gradient(0, rgba(255, 255, 255, 0), #fff);
+  background: url(/images/arrow-right.png) no-repeat right 10px center,
+    -moz-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+  background: url(images/arrow-right.png) no-repeat right 10px center,
+    -ms-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+  background: url(/images/arrow-right.png) no-repeat right 10px center,
+    -o-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+  background: url(images/arrow-right.png) no-repeat right 10px center,
+    linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+}
+
+/* .header img{
+    height: auto;
+    width: auto;
+    border: solid rgb(253, 253, 253) 2px;
+    border-radius: 25px;
+    display: inline;
+} */
+
+.tableData h2 {
+  text-align: center;
+  color: #5a5a5a;
+  /* background: -webkit-linear-gradient(#000000, #ED2024);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent; */
+  margin-bottom: 80px;
+  font-style: italic;
+  letter-spacing: 5px;
+}
+
+b {
+  color: black;
+}
+
+.tableData .container {
+  background: rgba(235, 235, 235, 0.4);
+  padding: 30px;
+  border-radius: 20px;
+}
+
+.tableData .function {
+  display: flex;
+  justify-content: right;
+  margin-bottom: 10px;
+}
+
+.tableData table .detail-table .btn-history {
+  width: 40px;
+  border-radius: 5px;
+  background-color: transparent;
+  border: none;
+}
+
+.tableData table .detail-table .btn-history:hover {
+  transform: scale(1.1);
+}
+
+.tableData table .detail-table .btn-history a i {
+  color: black;
+}
+
+.tableData table .detail-table .btn-history a i:hover {
+  color: #ed2024;
+}
+
+.tableData .function .btn-search {
+  margin-left: 10px;
+  margin-right: 10px;
+  width: 50px;
+  border-radius: 5px;
+  border: solid rgb(211, 211, 211) 2px;
+}
+
+.tableData .function .search {
+  width: 200px;
+  height: 35px;
+  padding-left: 12px;
+  border-radius: 5px;
+  border: solid rgb(211, 211, 211) 2px;
+  font-size: 16px;
+  outline: none;
+}
+
+.tableData tr > td {
+  width: 250px;
+  height: 20px;
+  text-align: center;
+}
+
+.tableData table .titleTable {
+  background-color: #f0f0f0;
+}
+
+.tableData table .detail-table .btn-detail {
+  text-align: right;
+  border: none;
+  background-color: transparent;
+}
+
+.tableData table .detail-table .btn-detail:hover {
+  transform: scale(1.1);
+}
+
+.tableData table .detail-table .btn-detail i:hover {
+  color: #ed2024;
+}
+
+.tableData .tableAnalys {
+  border-radius: 10px 10px 0 0;
+  overflow: scroll;
+  width: 100%;
+}
+
+.boderCollapTable {
+  border: solid black 1px;
+}
+
+.collapse {
+  font-size: 18px;
+  font-style: italic;
+  color: rgb(77, 77, 77);
+}
+
+.collapse tbody > td {
+  color: black;
+}
