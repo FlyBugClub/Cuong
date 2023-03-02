@@ -127,8 +127,9 @@ table  .data-parameter{
 }
 
 table tbody tr.device{
-    /* background-color: rebeccapurple; */
     height: 50px;
+    cursor: pointer;
+    pointer-events: all;
 }
 
 .scroltable-wrapper {
