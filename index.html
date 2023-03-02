@@ -22,6 +22,7 @@
     <title>Website Demo</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
     <script src="/js/SignIn/main.js"></script>
+    <!-- <script src="../Cuong/Script/jquery.js"></script> -->
   </head>
 
   <body class="body-login" style="background-color: rgb(238, 238, 238)">
@@ -68,26 +69,52 @@
                 <tr style="padding: 10px">
                   <td class="title">Email</td>
                   <td>
-                    <input
+
+                    <input  
                       class="input"
                       id="txtSignInEmail"
                       type="email"
                       placeholder=""
                     />
+                    
+                    <script>
+                      document.getElementById("txtSignInPassword")
+                      .addEventListener("keyup", function(event) {
+                      event.preventDefault();
+                      if (event.keyCode === 13) {
+                          document.getElementById("btn_signin").click();
+                        }
+                      });
+                    </script>
+
                   </td>
                 </tr>
                 <tr style="padding: 10px">
                   <td class="title">Password</td>
                   <td>
+
                     <div class="password-fill">
+
                       <input
                         id="txtSignInPassword"
                         class="input"
                         type="password"
                       />
+
+                      <script>
+                        document.getElementById("txtSignInPassword")
+                        .addEventListener("keyup", function(event) {
+                        event.preventDefault();
+                        if (event.keyCode === 13) {
+                            document.getElementById("btn_signin").click();
+                          }
+                        });
+                      </script>
+
                       <button type="button" class="showPass" onclick="">
                         <i class="fa-solid fa-eye-slash"></i>
                       </button>
+
                     </div>
                   </td>
                 </tr>
@@ -104,7 +131,7 @@
                 <p id="txtSignInNote"></p>
               </div>
               <div class="btn-login">
-                <button type="button" onclick = "btnSignIn_Click()">Login</button>
+                <button id="btn_signin" type="button" onclick = "btnSignIn_Click()">Login</button>
               </div>
 
               <!-- <input class="btn-signUp" type="button" value="ADD NEW" onclick="printmsg()" /> -->
