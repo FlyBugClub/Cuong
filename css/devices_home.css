@@ -33,31 +33,12 @@ b {
   margin-bottom: 10px;
 }
 
-.tableData table .detail-table .btn-history {
-  width: 40px;
-  border-radius: 5px;
-  background-color: transparent;
-  border: none;
-}
-
-.tableData table .detail-table .btn-history:hover {
-  transform: scale(1.1);
-}
-
-.tableData table .detail-table .btn-history a i {
-  color: black;
-}
-
-.tableData table .detail-table .btn-history a i:hover {
-  color: #ed2024;
-}
-
 .tableData .function .btn-search {
   margin-left: 10px;
   margin-right: 10px;
   width: 50px;
   border-radius: 5px;
-  border: solid rgb(211, 211, 211) 2px;
+  border: solid rgb(221, 173, 173) 2px;
 }
 
 .tableData .function .search {
@@ -65,7 +46,7 @@ b {
   height: 35px;
   padding-left: 12px;
   border-radius: 5px;
-  border: solid rgb(211, 211, 211) 2px;
+  border: solid rgb(221, 173, 173) 2px;
   font-size: 16px;
   outline: none;
 }
