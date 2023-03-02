@@ -16,6 +16,8 @@
 }
 
 #myBtn i{
+  background-color: rgb(190, 123, 34);
+  padding: 2px;
   background-color: transparent;
   vertical-align: middle;
 }

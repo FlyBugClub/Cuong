@@ -114,7 +114,7 @@ table tbody tr.device{
 }
 
 .fixHeader table {
-  /* border-collapse: collapse; */
+  border-collapse: collapse;
   width: 100%;
 }
 
@@ -139,7 +139,6 @@ table tbody tr.device{
   min-width: 100px;
   margin: auto;
   /* border-collapse: separate; */
-  border-spacing: 0;
 }
 
 .table-wrap {
@@ -153,15 +152,17 @@ table tbody tr.device{
   background: #fff;
   vertical-align: top;
   text-align: center;
+  vertical-align: middle;
 }
 
-.table-scroll thead th {
+.table-scroll thead {
   background: #333;
   color: #fff;
   position: -webkit-sticky;
   position: sticky;
   top: 0;
 }
+
 
 
 .scroltable-wrapper {
