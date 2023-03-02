@@ -74,8 +74,31 @@
 }
 
 .dataDivices-section .function .report button:hover {
-  color: #ed2024;
-  transform: scale(1.05);
+  color: #ffffff;
+  transition: 0.5s;
+}
+
+/* ----------------------- SEARCH --------------------- */
+
+.dataDivices-section .function .search{
+  justify-content: center;
+  padding: 12px 0;
+  margin-right: 5px;
+  /* margin-right: 20px; */
+}
+
+.dataDivices-section .function .search a button{
+  border: none;
+  background-color: rgba(230, 230, 230);
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 10px 0;
+}
+
+.dataDivices-section .function .search a button:hover{
+  color: white;
+  transition: 0.5s;
 }
 
 /* --------------------DATE PICKER--------------------- */
@@ -83,6 +106,7 @@
 .dataDivices-section .function .datepicker{
   justify-content: center;
   padding: 12px;
+  margin-right: -12px;
 }
 
 .dataDivices-section .function .datepicker input{
@@ -92,6 +116,8 @@
   border-radius: 20px;
   padding: 5px 12px;
   margin: 10px 10px;
+  cursor: pointer;
+  pointer-events: all;
 }
 
 /* ----------------------------------------------------- */

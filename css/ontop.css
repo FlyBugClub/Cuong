@@ -1,0 +1,33 @@
+#myBtn {
+  /* display: none; */
+  height: 52px;
+  width: 52px;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  font-size: 22px;
+  color: black;
+  border: none;
+  outline: none;
+  cursor: pointer;
+  border-radius: 50%;
+  vertical-align: middle;
+}
+
+#myBtn i{
+  background-color: transparent;
+  vertical-align: middle;
+}
+
+#myBtn:hover {
+  /* background-color: #ED2024; */
+  color: rgb(255, 115, 115);
+  transition: 0.25s;
+}
+
+#myBtn i:hover{
+  background-color: transparent;
+  vertical-align: top;
+  /* transition: 0.5s; */
+}
