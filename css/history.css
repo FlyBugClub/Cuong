@@ -45,8 +45,10 @@
 }
 
 /* ----------------------------------------------------- */
-/* ----------------- DEVICE INFORMATION ---------------- */
+/* ---------------------- FUNCTION --------------------- */
 /* ----------------------------------------------------- */
+
+/* ------------------------ REPORT --------------------- */
 
 .dataDivices-section .function {
   background-color: rgb(243, 243, 243);
@@ -68,11 +70,28 @@
   font-size: 20px;
   border-radius: 20px;
   padding: 5px 12px;
+  margin: 10px 0;
 }
 
 .dataDivices-section .function .report button:hover {
   color: #ed2024;
   transform: scale(1.05);
+}
+
+/* --------------------DATE PICKER--------------------- */
+
+.dataDivices-section .function .datepicker{
+  justify-content: center;
+  padding: 12px;
+}
+
+.dataDivices-section .function .datepicker input{
+  border: none;
+  background-color: rgba(230, 230, 230);
+  font-size: 20px;
+  border-radius: 20px;
+  padding: 5px 12px;
+  margin: 10px 10px;
 }
 
 /* ----------------------------------------------------- */
@@ -82,7 +101,7 @@
 .dataDivices-section .container .detail-info {
   background-color: rgb(243, 243, 243);
   padding: 20px;
-  margin: 0px 5px 0 5px;
+  margin: 0px 5px 10px 5px;
   border-radius: 20px;
   border: none;
   box-shadow: 5px 10px 10px rgb(165, 165, 165);
@@ -204,7 +223,7 @@ td {
 .dataDivices-section .container .detail-parameter {
   background-color: rgb(243, 243, 243);
   padding: 20px;
-  margin:  0 5px 0 5px;
+  margin:  0 5px 10px 5px;
   border-radius: 20px;
   border: none;
   box-shadow: 5px 10px 10px rgb(165, 165, 165);

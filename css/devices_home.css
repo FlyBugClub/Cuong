@@ -1,43 +1,3 @@
-.scroltable-wrapper {
-  position: relative;
-}
-.scroltable-container {
-  overflow: auto;
-}
-.scroltable-nav {
-  display: none;
-  position: absolute;
-  width: 60px;
-  height: 100%;
-  cursor: pointer;
-}
-.scroltable-nav.scroltable-nav-left {
-  left: 0;
-  background: url(images/arrow-left.png) no-repeat 10px center,
-    -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
-  background: url(images/arrow-left.png) no-repeat 10px center,
-    -moz-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
-  background: url(images/arrow-left.png) no-repeat 10px center,
-    -ms-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
-  background: url(images/arrow-left.png) no-repeat 10px center,
-    -o-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
-  background: url(images/arrow-left.png) no-repeat 10px center,
-    linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
-}
-.scroltable-nav.scroltable-nav-right {
-  right: 0;
-  background: url(images/arrow-right.png) no-repeat right 10px center,
-    -webkit-linear-gradient(0, rgba(255, 255, 255, 0), #fff);
-  background: url(/images/arrow-right.png) no-repeat right 10px center,
-    -moz-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
-  background: url(images/arrow-right.png) no-repeat right 10px center,
-    -ms-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
-  background: url(/images/arrow-right.png) no-repeat right 10px center,
-    -o-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
-  background: url(images/arrow-right.png) no-repeat right 10px center,
-    linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
-}
-
 /* .header img{
     height: auto;
     width: auto;
@@ -110,46 +70,112 @@ b {
   outline: none;
 }
 
+/* --------------------------------------------- */
+/* ------------------- Table ------------------- */
+/* --------------------------------------------- */
+
+.wrap{
+    display: block;
+    justify-content: center;
+    border: 20px;
+}
+
+table{
+    width: 100%;
+    /* margin-top: 2%; */
+    border-radius: 20px;
+}
+
+.cate{
+    border-right: 1px solid rgb(221, 221, 221);
+}
+
+table thead{
+    background-color: rgb(221, 173, 173);
+}
+
+table tbody{
+    background-color: rgb(221, 173, 173);
+}
+
+table td,th{
+    font-size: 18px;
+    vertical-align: middle;
+}
+
+.hr{
+    width: 95%;
+    margin: auto;
+}
+
+.part-table {
+    width: 100px;
+    text-align: center;
+    /* border-bottom: 1px solid rgb(196, 196, 196); */
+  }
+
+.id-row{
+    /* background-color: #ed2024; */
+    width: 100px;
+    border-right: 1px solid rgb(221, 221, 221);
+    border-top-left-radius: 12px;
+    vertical-align: middle;
+}
+
+table  .data-parameter{
+    border-top-right-radius: 12px;
+}
+
+table tbody tr.device{
+    /* background-color: rebeccapurple; */
+    height: 50px;
+}
+
+.scroltable-wrapper {
+    position: relative;
+  }
+  .scroltable-container {
+    overflow: auto;
+  }
+  .scroltable-nav {
+    display: none;
+    position: absolute;
+    width: 60px;
+    height: 100%;
+    cursor: pointer;
+  }
+  .scroltable-nav.scroltable-nav-left {
+    left: 0;
+    background: url(images/arrow-left.png) no-repeat 10px center,
+      -webkit-linear-gradient(180deg, rgba(255, 255, 255, 0), #fff);
+    background: url(images/arrow-left.png) no-repeat 10px center,
+      -moz-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+    background: url(images/arrow-left.png) no-repeat 10px center,
+      -ms-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+    background: url(images/arrow-left.png) no-repeat 10px center,
+      -o-linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+    background: url(images/arrow-left.png) no-repeat 10px center,
+      linear-gradient(to left, rgba(255, 255, 255, 0), #fff);
+  }
+  .scroltable-nav.scroltable-nav-right {
+    right: 0;
+    background: url(images/arrow-right.png) no-repeat right 10px center,
+      -webkit-linear-gradient(0, rgba(255, 255, 255, 0), #fff);
+    background: url(/images/arrow-right.png) no-repeat right 10px center,
+      -moz-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    background: url(images/arrow-right.png) no-repeat right 10px center,
+      -ms-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    background: url(/images/arrow-right.png) no-repeat right 10px center,
+      -o-linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+    background: url(images/arrow-right.png) no-repeat right 10px center,
+      linear-gradient(to right, rgba(255, 255, 255, 0), #fff);
+  }
+
+  .tableData .tableAnalys {
+    overflow: scroll;
+    width: 100%;
+  }
+
 .tableData tr > td {
-  width: 250px;
-  height: 20px;
   text-align: center;
-}
-
-.tableData table .titleTable {
-  background-color: #f0f0f0;
-}
-
-.tableData table .detail-table .btn-detail {
-  text-align: right;
-  border: none;
-  background-color: transparent;
-}
-
-.tableData table .detail-table .btn-detail:hover {
-  transform: scale(1.1);
-}
-
-.tableData table .detail-table .btn-detail i:hover {
-  color: #ed2024;
-}
-
-.tableData .tableAnalys {
-  border-radius: 10px 10px 0 0;
-  overflow: scroll;
-  width: 100%;
-}
-
-.boderCollapTable {
-  border: solid black 1px;
-}
-
-.collapse {
-  font-size: 18px;
-  font-style: italic;
-  color: rgb(77, 77, 77);
-}
-
-.collapse tbody > td {
-  color: black;
 }
