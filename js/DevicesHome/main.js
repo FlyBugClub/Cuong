@@ -179,7 +179,7 @@ function AddTable(bien,bien_parameter)
         str += "</li>";
         str += "</ul>";
    }
-    $("#hao").html(str);
+    document.getElementById("#hao").html(str);
     refresh = 1;
 }
     
