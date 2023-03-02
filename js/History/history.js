@@ -1,7 +1,6 @@
-const URL = "https://digi27.azurewebsites.net/api/healthies";
-
-function pageLoad() {
-    //alert(localStorage.getItem("key")); 
+var UR = "https://digi27.azurewebsites.net/api/healthies";
+function pageLoadd() {
+    alert("hehe"); 
     getDetails();
     
 }
@@ -10,7 +9,7 @@ function pageLoad() {
 
 async function getDetails() {
     alert("hehe");
-    await axios.get(URL + "/SearchByPIDproduct/sp006"/* + localStorage.getItem("key"))*/).then((response) => {
+    await axios.get(UR + "/SearchByPIDproduct/sp006"/* + localStorage.getItem("key"))*/).then((response) => {
         var Human = response.data;
         //alert(Human);
         for(var human1 of Human ){
