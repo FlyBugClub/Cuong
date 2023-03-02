@@ -22,11 +22,7 @@
     />
     <title>Website Demo</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-    <!-- <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script> -->
-    <script language="JavaScript" type="text/javascript" src="/js/jquery-1.2.6.min.js"></script>
-<script language="JavaScript" type="text/javascript" src="/js/jquery-ui-personalized-1.5.2.packed.js"></script>
-<script language="JavaScript" type="text/javascript" src="/js/sprinkle.js"></script>
-<script src="../Script/jquery.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="../js/DevicesHome/main.js"></script>
   </head>
 
@@ -143,23 +139,14 @@
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
-        <div class="wrap">
-          <table
-            class="w3-table-all table fixed_header"
-            style="overflow-y: scroll"
-          >
+        <div class="wrap table-scroll">
+          <table class="table">
             <thead>
               <tr class="abc">
                 <th class="part-table id-row" rowspan="0">ID</th>
                 <th class="part-table" colspan="5">Data devices</th>
-                <th class="part-table data-parameter" colspan="7">
-                  Data parameter
-                </th>
+                <th class="part-table data-parameter" colspan="7">Data parameter</th>
               </tr>
-              <!-- <tr>
-              <th colspan="4"><hr class="hr" /></th>
-              <th colspan="6"><hr class="hr" /></th>
-            </tr> -->
               <tr>
                 <th class="part-table">Name</th>
                 <th class="part-table">Group device</th>
@@ -171,8 +158,8 @@
                 >
                   Time
                 </th>
-                <th class="part-table abc">Temp</th>
-                <th class="part-table abc">Humid</th>
+                <th class="part-table abc">Temperature</th>
+                <th class="part-table abc">Humidity</th>
                 <th class="part-table abc">Pressure</th>
                 <th class="part-table abc">Speed</th>
                 <th class="part-table abc">Winds speed</th>
@@ -181,19 +168,6 @@
               </tr>
             </thead>
             <tbody id="hao">
-              <!-- <tr class="hr">
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-              <th><hr /></th>
-            </tr> -->
               <!-- <tr id="history" class="device">
                 <td class="cate">1458SVF658</td>
                 <td>cuong</td>
@@ -208,132 +182,9 @@
                 <td>West</td>
                 <td>16%</td>
               </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr>
-              <tr id="history" class="device">
-                <td class="cate">4587FGE336</td>
-                <td>Camera</td>
-                <td>HCM</td>
-                <td>06/23/2023</td>
-                <td class="cate">12:00 PM</td>
-                <td>16<sup>o</sup>C</td>
-                <td>23<sup>o</sup>F</td>
-                <td>22%</td>
-                <td>16(m/s)</td>
-                <td>West</td>
-                <td>16%</td>
-              </tr> -->
             </tbody>
           </table>
-        </div>
-
-        <!-- <div id="cuong" class="w3-table-all table table-bordered table-hover tableAnalys" style="overflow-y: scroll;"> -->
-        <!-- <table id="table1" class="w3-table-all table table-bordered table-hover tableAnalys" style="overflow-y: scroll;">
-                  <thead>
-                    <tr class="table-dark">
-                      <td><b>ID</b></td>
-                      <td><b>Devices</b></td>
-                      <td><b>Location</b></td>
-                      <td><b>Date</b></td>
-                      <td><b>Time</b></td>
-                      <td><b>Parameter</b></td>
-                      <td><b>Detail</b></td>
-                    </tr>
-                  </thead>
-                  <tbody id="cuong1">
-                   <tr id = "cuong2">
-                   </tr>
-                  </tbody>
-                </table> -->
+        </div>-->
       </div>
 
       <script type="text/javascript">

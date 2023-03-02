@@ -63,21 +63,14 @@ b {
 
 table{
     width: 100%;
-    height: 200px;
-    /* margin-top: 2%; */
-    /* border-radius: 20px; */
 }
 
 .cate{
     border-right: 1px solid rgb(221, 221, 221);
 }
 
-table thead{
-    background-color: rgb(221, 173, 173);
-}
-
 table tbody{
-    background-color: rgb(221, 173, 173);
+    background-color: rgb(223, 187, 187);
 }
 
 table td,th{
@@ -85,13 +78,7 @@ table td,th{
     vertical-align: middle;
 }
 
-.hr{
-    width: 95%;
-    margin: auto;
-}
-
 .part-table {
-    width: 100px;
     text-align: center;
     /* border-bottom: 1px solid rgb(196, 196, 196); */
   }
@@ -113,6 +100,69 @@ table tbody tr.device{
     cursor: pointer;
     pointer-events: all;
 }
+
+/* ----------------- TABLE SCROLL ---------------- */
+
+.fixHeader {
+  overflow-x: auto;
+}
+
+.fixHeader th {
+  position: sticky;
+  top: 0;
+  background-color: #b4bab4;
+}
+
+.fixHeader table {
+  /* border-collapse: collapse; */
+  width: 100%;
+}
+
+.fixHeader th,
+.fixHeader td {
+  padding: 8px 16px;
+}
+
+.table-scroll {
+  position: relative;
+  width: 100%;
+  z-index: 1;
+  margin: auto;
+  overflow: scroll;
+  height: auto;
+  min-height: 300px;
+  max-height: 1200px;
+}
+
+.table-scroll table {
+  width: 100%;
+  min-width: 100px;
+  margin: auto;
+  /* border-collapse: separate; */
+  border-spacing: 0;
+}
+
+.table-wrap {
+  position: relative;
+}
+
+.table-scroll th,
+.table-scroll td {
+  padding: 5px 10px;
+  /* border: 1px solid #000; */
+  background: #fff;
+  vertical-align: top;
+  text-align: center;
+}
+
+.table-scroll thead th {
+  background: #333;
+  color: #fff;
+  position: -webkit-sticky;
+  position: sticky;
+  top: 0;
+}
+
 
 .scroltable-wrapper {
     position: relative;
