@@ -22,6 +22,7 @@
     />
     <title>Website Demo</title>
     <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js"></script>
     <script src="../js/DevicesHome/main.js"></script>
   </head>
 
@@ -133,22 +134,21 @@
       <h2>Status</h2>
       <div class="container">
         <div class="function">
-          <input class="search" type="text" placeholder="Search..." title="Search ID"/>
+          <input class="search" type="text" placeholder="Search..." />
           <button class="btn-search" type="button">
             <i class="fa-solid fa-magnifying-glass"></i>
           </button>
         </div>
-        <!--cai bang-->
         <div class="wrap">
           <table
             class="w3-table-all table table-hover tableAnalys"
-            style="overflow-y: scroll;"
+            style="overflow-y: scroll"
           >
             <thead>
               <tr>
                 <th class="part-table id-row" rowspan="0">ID</th>
-                <th class="part-table" colspan="4">Data devices</th>
-                <th class="part-table data-parameter" colspan="6">
+                <th class="part-table" colspan="5">Data devices</th>
+                <th class="part-table data-parameter" colspan="7">
                   Data parameter
                 </th>
               </tr>
@@ -157,6 +157,7 @@
               <th colspan="6"><hr class="hr" /></th>
             </tr> -->
               <tr>
+                <th class="part-table">Name</th>
                 <th class="part-table">Group device</th>
                 <th class="part-table">Location</th>
                 <th class="part-table">Date</th>
@@ -169,12 +170,13 @@
                 <th class="part-table">Temperature</th>
                 <th class="part-table">Humidity</th>
                 <th class="part-table">Pressure</th>
+                <th class="part-table">Speed</th>
                 <th class="part-table">Winds speed</th>
                 <th class="part-table">Wind Direction</th>
                 <th class="part-table">Acceleration</th>
               </tr>
             </thead>
-            <tbody>
+            <tbody id="hao">
               <!-- <tr class="hr">
               <th><hr /></th>
               <th><hr /></th>
@@ -188,8 +190,9 @@
               <th><hr /></th>
               <th><hr /></th>
             </tr> -->
-              <tr id="history" class="device">
+              <!-- <tr id="history" class="device">
                 <td class="cate">1458SVF658</td>
+                <td>cuong</td>
                 <td>Sensor</td>
                 <td>HCM</td>
                 <td>06/23/2023</td>
@@ -304,7 +307,7 @@
                 <td>16(m/s)</td>
                 <td>West</td>
                 <td>16%</td>
-              </tr>
+              </tr> -->
             </tbody>
           </table>
         </div>
