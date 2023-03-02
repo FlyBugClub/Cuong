@@ -358,10 +358,11 @@ function AddFunction()
     setInterval(function newTable(){
         if(refresh === 1)
         {
+            alert("ok");
             GetParameter();
             refresh = 0;
         }
-    }, 2000);
+    }, 1000);
     
 
  
