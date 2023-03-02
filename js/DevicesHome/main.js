@@ -5,13 +5,9 @@ var bang = [];
 var count_bold = 0;
 var count = 0;
 var str ;
-var count_button = 0;
+var refresh;
 var test ;
-var count_button_id_onclick = 0;
-var bar = ["ID","Device","Location","Date","Time","Parameter","Details"];
 
-
-var the = [];
 
 //===================== button info history =====================
 var btn = document.createElement('button');
@@ -30,7 +26,7 @@ btn.style.textDecoration="none"
 async function check()
 {		                        
     email = sessionStorage.getItem('email');
-    await axios.get(URL + "/SearchByEmail/tr6r20@gmail,com").then((response) =>{
+    await axios.get(URL + "/SearchByEmail/"+email).then((response) =>{
         var healthies = response.data;
 
         for(var human of healthies )
@@ -60,9 +56,7 @@ async function GetParameter()
         var healthies = response.data;
         var i =0;
         test = 0;
-        count_button_id_onclick = 0;
         count = 0;
-        bang.push(bar);
         for(var human of healthies )
         {
             PIDc[i] =  human.PID;
@@ -85,7 +79,7 @@ async function GetParameter()
                         if(PIDc[j+1] === human.PID )
                         {
                             // count_button_id_onclick ++;
-                            test = test + 1;
+                            // test = test + 1;
                             break;
                         }
                     }
@@ -94,7 +88,7 @@ async function GetParameter()
                     //    //đọc trực tiếp       
                             if(PIDc[j+1] === human.PID)
                             {
-                                the.push(human.PID);
+                              
                     
                                 test = test + 1;
                                 // alert(PIDc[j+1] + human.PID + "N");
@@ -115,66 +109,78 @@ async function GetParameter()
                                         bien_parameter.push(slip_Current_Time[0]);
                                         bien_parameter.push(slip_Current_Time[1]+" "+slip_Current_Time[2]);
 
-                                        bien.push(human1.Temperature);
-                                        bien.push(human1.Humidity);
-                                        bien.push(human1.Pressure);
-                                        bien.push(human1.Speed);
-                                        bien.push(human1.Speed_Of_Winds);
-                                        bien.push(human1.Wind_Direction);
-                                        bien.push(human1.Acceleration);
-                                            for(var i = 0;i < 7;i++)
+                                        bien_parameter.push(human1.Temperature);
+                                        bien_parameter.push(human1.Humidity);
+                                        bien_parameter.push(human1.Pressure);
+                                        bien_parameter.push(human1.Speed);
+                                        bien_parameter.push(human1.Speed_Of_Winds);
+                                        bien_parameter.push(human1.Wind_Direction);
+                                        bien_parameter.push(human1.Acceleration);
+
+                                            for(var i = 0;i < 13;i++)
                                             {
                                 
-                                                if(bien[i] === null)
+                                                if(bien_parameter[i] === null)
                                                 {
-                                                    bien[i]="--/---";
+                                                    bien_parameter[i]="--/---";
                                                 }
-                                                if(i >= 0 && i<=6 && bien_parameter[i] === null)
-                                                {
-                                                    bien_parameter[i] = "--/---";
-                                                }
+                                                // if(i >= 0 && i<=6 && bien_parameter[i] === null)
+                                                // {
+                                                //     bien_parameter[i] = "--/---";
+                                                // }
                                             }
-                                            break;
+                                        bang.push(bien_parameter);
+                                        
+                                        break;
                                         // }
                                     }
                                 }
-                                AddTable(bien,bien_parameter);
+                                
                             });
                             
 
 
                         }
                     }
+                        
+                        
                 }
                 
             })
+            //Code here
+            
             
         }
-        
+        AddTable(bang); 
 }
+
 function AddTable(bien,bien_parameter)
 {
-   
-    str += "<tr id = 'history' class = 'device'>";
-    str += "<td class = 'cate'>"+bien_parameter[0]+"</td>";
-    str +="<td>"+bien_parameter[1]+"</td>";
-    str +="<td>"+bien_parameter[2]+"</td>";
-    str +="<td>"+bien_parameter[3]+"</td>";
-    str +="<td>"+bien_parameter[4]+"</td>";
+   for(var i = 0;i < test;i++)
+   {
     
-    str += "<td class = 'cate'>"+bien_parameter[5]+"</td>";
-    str +="<td>"+bien[0]+"</td>";
-    str +="<td>"+bien[1]+"</td>";
-    str +="<td>"+bien[2]+"</td>";
-    str +="<td>"+bien[3]+"</td>";
-    str +="<td>"+bien[4]+"</td>";
-    str +="<td>"+bien[5]+"</td>";
-    str +="<td>"+bien[6]+"</td>";
-    str += '<ul class="details">';
-    str += "</span> ";
-    str += "</li>";
-    str += "</ul>";
+        str += "<tr id = 'history' class = 'device'>";
+        str += "<td class = 'cate'>"+bang[i][0]+"</td>";
+        str +="<td>"+bang[i][1]+"</td>";
+        str +="<td>"+bang[i][2]+"</td>";
+        str +="<td>"+bang[i][3]+"</td>";
+        str +="<td>"+bang[i][4]+"</td>";
+        
+        str += "<td class = 'cate'>"+bang[i][5]+"</td>";
+        str +="<td>"+bang[i][6]+"</td>";
+        str +="<td>"+bang[i][7]+"</td>";
+        str +="<td>"+bang[i][8]+"</td>";
+        str +="<td>"+bang[i][9]+"</td>";
+        str +="<td>"+bang[i][10]+"</td>";
+        str +="<td>"+bang[i][11]+"</td>";
+        str +="<td>"+bang[i][12]+"</td>";
+        str += '<ul class="details">';
+        str += "</span> ";
+        str += "</li>";
+        str += "</ul>";
+   }
     $("#hao").html(str);
+    refresh = 1;
 }
     
 function DeleteTable()
@@ -348,4 +354,14 @@ function AddFunction()
 // {
 //     document.getElementById("demo").innerHTML=Date();
 // }
-//  setInterval(GetParameter, 5000);
+
+    setInterval(function newTable(){
+        if(refresh === 1)
+        {
+            GetParameter();
+            refresh = 0;
+        }
+    }, 2000);
+    
+
+ 
