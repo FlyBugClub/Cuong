@@ -7,8 +7,8 @@ var count = 0;
 var str ;
 var refresh;
 var test ;
-
-
+var the = [];
+var count_button = 0;
 //===================== button info history =====================
 var btn = document.createElement('button');
 btn.type = 'button';
@@ -26,7 +26,7 @@ btn.style.textDecoration="none"
 async function check()
 {		                        
     email = sessionStorage.getItem('email');
-    await axios.get(URL + "/SearchByEmail/"+email).then((response) =>{
+    await axios.get(URL + "/SearchByEmail/tr6r20@gmail,com").then((response) =>{
         var healthies = response.data;
 
         for(var human of healthies )
@@ -66,9 +66,7 @@ async function GetParameter()
     // setTimeout(async () => {
         for(var j = (PIDc.length - 1);j >= 0 ;)
         {
-            var bien_parameter = [];
-
-            var bien = [];
+            var bien_parameter = [];         
             j  = j -1 ;
             await axios.get(URL + "/SearchByPIDProduct/"+PIDc[j+1]).then(async (response) =>{
                 var healthies = response.data;   
@@ -78,8 +76,6 @@ async function GetParameter()
                     {
                         if(PIDc[j+1] === human.PID )
                         {
-                            // count_button_id_onclick ++;
-                            // test = test + 1;
                             break;
                         }
                     }
@@ -88,8 +84,10 @@ async function GetParameter()
                     //    //đọc trực tiếp       
                             if(PIDc[j+1] === human.PID)
                             {
-                              
-                    
+                                if(count_button === 0)
+                                {
+                                    the.push(PIDc[j+1]);
+                                }
                                 test = test + 1;
                                 // alert(PIDc[j+1] + human.PID + "N");
                                 await axios.get(URL + "/SearchByPIDParameterDR/"+PIDc[j+1]).then((response) =>{
@@ -98,7 +96,7 @@ async function GetParameter()
                                 {
                                     if(PIDc[j+1] === human1.PID)
                                     {
-                            
+                                        
                                         let slip_Current_Time = human1.Current_Time.split(" ");
                                         // let slip_Current_Time_date = slip_Current_Time[0].split("/");
                                         // let slip_Current_Time_time = slip_Current_Time[1].split(":");
@@ -158,8 +156,7 @@ function AddTable(bien,bien_parameter)
 {
    for(var i = 0;i < test;i++)
    {
-    
-        str += "<tr id = 'history' class = 'device'>";
+        str += "<tr id =" +i + " class = 'device'>";
         str += "<td class = 'cate'>"+bang[i][0]+"</td>";
         str +="<td>"+bang[i][1]+"</td>";
         str +="<td>"+bang[i][2]+"</td>";
@@ -174,13 +171,11 @@ function AddTable(bien,bien_parameter)
         str +="<td>"+bang[i][10]+"</td>";
         str +="<td>"+bang[i][11]+"</td>";
         str +="<td>"+bang[i][12]+"</td>";
-        str += '<ul class="details">';
-        str += "</span> ";
-        str += "</li>";
-        str += "</ul>";
+        str +="</tr>";
    }
     $("#hao").html(str);
-    refresh = 1;
+    
+    AddButton();
 }
     
 function DeleteTable()
@@ -325,7 +320,7 @@ function MakeTable()
     container.appendChild(tagTable);
     AddFunction();
 }
-function AddFunction()
+function AddButton()
 {
     
     // for(var i = 1;i<=count_button_id_onclick;i++)
@@ -335,12 +330,14 @@ function AddFunction()
     //         alert(this.id);
     //     };
     // }
-    for ( var i = 1; i <= count_button_id_onclick; i++ ) (function(i){ 
+    for ( var i = 0; i < test; i++ ) (function(i){ 
         document.getElementById(i).onclick = function() {
-            localStorage.setItem("key",the[this.id-1]);
+            localStorage.setItem("key",the[this.id]);
             alert(localStorage.getItem('key'));
         }
       })(i);
+      count_button = 1;
+      refresh = 1;
     // var buttons = document.getElementById("1");
     // for (var i = 0; i <= count_button_id_onclick; i += 1) {
     // buttons[i].onclick = function(e) {
@@ -348,12 +345,7 @@ function AddFunction()
     // };
     // }
 }
-// document.getElementById("1").onclick=function(){displayDate()};
 
-// function displayDate()
-// {
-//     document.getElementById("demo").innerHTML=Date();
-// }
 
     setInterval(function newTable(){
         if(refresh === 1)
@@ -361,7 +353,7 @@ function AddFunction()
             GetParameter();
             refresh = 0;
         }
-    }, 2000);
+    }, 1000);
     
 
  
