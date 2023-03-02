@@ -4,6 +4,7 @@ var PIDc = [];
 var bang = [];
 var count_bold = 0;
 var count = 0;
+var str ;
 var count_button = 0;
 var test ;
 var count_button_id_onclick = 0;
@@ -53,6 +54,7 @@ async function check()
 }
 async function GetParameter()
 {
+    str = "";
      bang.length = 0;
     await axios.get(URL + "/SearchByUIDOwner/"+sessionStorage.getItem('UID')).then((response) =>{
         var healthies = response.data;
@@ -71,8 +73,8 @@ async function GetParameter()
         for(var j = (PIDc.length - 1);j >= 0 ;)
         {
             var bien_parameter = [];
-            var check_parameter = [" "," "," "," "," "," "," "];
-            var bien = [" "," "," "," "," "," "," "];
+
+            var bien = [];
             j  = j -1 ;
             await axios.get(URL + "/SearchByPIDProduct/"+PIDc[j+1]).then(async (response) =>{
                 var healthies = response.data;   
@@ -93,115 +95,56 @@ async function GetParameter()
                             if(PIDc[j+1] === human.PID)
                             {
                                 the.push(human.PID);
-                                count_button_id_onclick ++;
+                    
                                 test = test + 1;
                                 // alert(PIDc[j+1] + human.PID + "N");
-                                if(human.Acceleration === "Y")
-                                {
-                                    check_parameter.push("Acceleration");
-                                }
-                                if(human.Speed === "Y")
-                                {
-                                    check_parameter.push("Speed");
-                                }
-                                if(human.Temperature === "Y")
-                                {
-                                    check_parameter.push("Temperature");
-                                }
-                                if(human.Humidity === "Y")
-                                {
-                                    check_parameter.push("Humidity");
-                                }
-                                if(human.Pressure === "Y")
-                                {
-                                    check_parameter.push("Pressure");
-                                }
-                                if(human.Speed_Of_Winds === "Y")
-                                {
-                                    check_parameter.push("Speed_Of_Winds");
-                                }
-                                if(human.Wind_Direction === "Y")
-                                {
-                                    check_parameter.push("Wind_Direction");
-                                }
-                                
                                 await axios.get(URL + "/SearchByPIDParameterDR/"+PIDc[j+1]).then((response) =>{
                                 var healthies = response.data;
                                 for(var human1 of healthies )
                                 {
-                                    
                                     if(PIDc[j+1] === human1.PID)
                                     {
-                                        var date = new Date();
+                            
                                         let slip_Current_Time = human1.Current_Time.split(" ");
                                         // let slip_Current_Time_date = slip_Current_Time[0].split("/");
                                         // let slip_Current_Time_time = slip_Current_Time[1].split(":");
-                                        
                                         bien_parameter.push(human.PID);
                                         bien_parameter.push(human.PName);
-                                        bien_parameter.push("HCM");
+                                        bien_parameter.push(human.Group);
+                                        bien_parameter.push(human.Location);
                                         bien_parameter.push(slip_Current_Time[0]);
                                         bien_parameter.push(slip_Current_Time[1]+" "+slip_Current_Time[2]);
-                                        
-                                        // if(slip_Current_Time_date[0] === "6" 
-                                        //     && slip_Current_Time_date[1] === "12"
-                                        //     && slip_Current_Time_date[2] === "2015" ) 
-                                        // {
-                                            for(var i = 0;i < check_parameter.length;i++)
+
+                                        bien.push(human1.Temperature);
+                                        bien.push(human1.Humidity);
+                                        bien.push(human1.Pressure);
+                                        bien.push(human1.Speed);
+                                        bien.push(human1.Speed_Of_Winds);
+                                        bien.push(human1.Wind_Direction);
+                                        bien.push(human1.Acceleration);
+                                            for(var i = 0;i < 7;i++)
                                             {
-                              
-                                                if(check_parameter[i] === "Acceleration")
+                                
+                                                if(bien[i] === null)
                                                 {
-                                                    bien.push(human1.Acceleration);
-                                                } 
-                                                else if(check_parameter[i] === "Speed")
-                                                {
-                                                    bien.push(human1.Speed+"m/s");
+                                                    bien[i]="--/---";
                                                 }
-                                                else if(check_parameter[i] === "Temperature")
+                                                if(i >= 0 && i<=6 && bien_parameter[i] === null)
                                                 {
-                                                    bien.push(human1.Temperature + "°C");
-                                                }
-                                                else if(check_parameter[i] === "Humidity")
-                                                {
-                                                    bien.push(human1.Humidity + "°F");
-                                                }
-                                                else if(check_parameter[i] === "Pressure")
-                                                {
-                                                    bien.push(human1.Pressure);
-                                                }
-                                                else if(check_parameter[i] === "Speed_Of_Winds")
-                                                {
-                                                    bien.push(human1.Speed_Of_Winds);
-                                                }
-                                                else if(check_parameter[i] === "Wind_Direction")
-                                                {
-                                                    bien.push(human1.Wind_Direction);
+                                                    bien_parameter[i] = "--/---";
                                                 }
                                             }
-                                            
                                             break;
                                         // }
                                     }
                                 }
+                                AddTable(bien,bien_parameter);
                             });
+                            
+
+
                         }
                     }
-                    //code here
-                    bien.reverse();
-                    check_parameter.reverse();
-                    bien_parameter.push(bien[0]);
-                    
-                    bang.push(bien_parameter);
-                    bang.push(check_parameter);
-                    bang.push(bien);
-                    if (test === PIDc.length - 1)
-                    {
-                        DeleteTable();
-                        MakeTable();
-                        
-                    }
-
                 }
                 
             })
@@ -209,6 +152,31 @@ async function GetParameter()
         }
         
 }
+function AddTable(bien,bien_parameter)
+{
+   
+    str += "<tr id = 'history' class = 'device'>";
+    str += "<td class = 'cate'>"+bien_parameter[0]+"</td>";
+    str +="<td>"+bien_parameter[1]+"</td>";
+    str +="<td>"+bien_parameter[2]+"</td>";
+    str +="<td>"+bien_parameter[3]+"</td>";
+    str +="<td>"+bien_parameter[4]+"</td>";
+    
+    str += "<td class = 'cate'>"+bien_parameter[5]+"</td>";
+    str +="<td>"+bien[0]+"</td>";
+    str +="<td>"+bien[1]+"</td>";
+    str +="<td>"+bien[2]+"</td>";
+    str +="<td>"+bien[3]+"</td>";
+    str +="<td>"+bien[4]+"</td>";
+    str +="<td>"+bien[5]+"</td>";
+    str +="<td>"+bien[6]+"</td>";
+    str += '<ul class="details">';
+    str += "</span> ";
+    str += "</li>";
+    str += "</ul>";
+    $("#hao").html(str);
+}
+    
 function DeleteTable()
 {
     var container = document.getElementById("cuong");
@@ -380,4 +348,4 @@ function AddFunction()
 // {
 //     document.getElementById("demo").innerHTML=Date();
 // }
-//  setInterval(GetParameter, 20000);
+//  setInterval(GetParameter, 5000);
