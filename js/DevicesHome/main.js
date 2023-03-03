@@ -333,8 +333,8 @@ function AddButton()
     // }
     for ( var i = 0; i < test; i++ ) (function(i){ 
         document.getElementById(i).onclick = function() {
-            localStorage.setItem("key",the[this.id]);
-            alert(localStorage.getItem('key'));
+            sessionStorage.setItem("key",the[this.id]);
+            window.location="../html/history.html";
         }
       })(i);
       count_button = 1;

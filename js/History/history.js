@@ -10,9 +10,8 @@ function pageLoadd() {
 
 async function getDetails() {
 
-    await axios.get(UR + "/SearchByPIDParameterDR/sp008"/* + localStorage.getItem("key"))*/).then((response) => {
+    await axios.get(UR + "/SearchByPIDProduct/" + sessionStorage.getItem("key")).then((response) => {
         var Human = response.data;
-        alert(Human.Acceleration);
         for (var human1 of Human) {
             document.getElementById("txtID").innerHTML = human1.PID;
             document.getElementById("txtDevice").innerHTML = human1.PName;
