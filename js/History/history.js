@@ -56,9 +56,9 @@ async function GetParameter() {
     // }
     
     
-        document.getElementById("Temperature").innerHTML = GetParameter[0];
-        document.getElementById("Humidity").innerHTML = GetParameter[1];
-        document.getElementById("Speed").innerHTML = GetParameter[2];
+        document.getElementById("Temperature").innerHTML = GetParameter[0]+"<sup>o</sup>C";
+        document.getElementById("Humidity").innerHTML = GetParameter[1]+"<sup>o</sup>F";
+        document.getElementById("Speed").innerHTML = GetParameter[2];   
         document.getElementById("Pressure").innerHTML = GetParameter[3];
         document.getElementById("Acceleration").innerHTML = GetParameter[4];
         document.getElementById("WindD").innerHTML = GetParameter[5];
