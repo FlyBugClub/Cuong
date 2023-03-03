@@ -25,11 +25,12 @@
 #myBtn:hover {
   /* background-color: #ED2024; */
   color: rgb(255, 115, 115);
-  transition: 0.25s;
+  transition: 0.2s;
 }
 
-#myBtn i:hover{
+#myBtn:hover i{
   background-color: transparent;
+  /* font-size: 26px; */
   vertical-align: top;
-  /* transition: 0.5s; */
+  /* transition: 0.2s;/ */
 }
