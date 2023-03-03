@@ -47,23 +47,23 @@ async function GetParameter() {
     {                         
         if(GetParameter[i] === null)
         {
-            bien_parameter[i]="--/---";
+            GetParameter[i]="--/---";
         }                                         
     }
     for(var i = 0;i < 7;i++)
     {                         
         alert(GetParameter[i]);                                 
     }
-    for(var i = 0; i < 7; i++)
-    {
-        document.getElementById("Temperature").innerHTML = GetParameter[i];
-        document.getElementById("Humidity").innerHTML = GetParameter[i];
-        document.getElementById("Speed").innerHTML = GetParameter[i];
-        document.getElementById("Pressure").innerHTML = GetParameter[i];
-        document.getElementById("Acceleration").innerHTML = GetParameter[i];
-        document.getElementById("WindD").innerHTML = GetParameter[i];
-        document.getElementById("WindS").innerHTML = GetParameter[i];
-    }
+    
+    
+        document.getElementById("Temperature").innerHTML = GetParameter[0];
+        document.getElementById("Humidity").innerHTML = GetParameter[1];
+        document.getElementById("Speed").innerHTML = GetParameter[2];
+        document.getElementById("Pressure").innerHTML = GetParameter[3];
+        document.getElementById("Acceleration").innerHTML = GetParameter[4];
+        document.getElementById("WindD").innerHTML = GetParameter[5];
+        document.getElementById("WindS").innerHTML = GetParameter[6];
+    
 }
 
 
