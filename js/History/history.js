@@ -50,10 +50,10 @@ async function GetParameter() {
             GetParameter[i]="--/---";
         }                                         
     }
-    for(var i = 0;i < 7;i++)
-    {                         
-        alert(GetParameter[i]);                                 
-    }
+    // for(var i = 0;i < 7;i++)
+    // {                         
+    //     alert(GetParameter[i]);                                 
+    // }
     
     
         document.getElementById("Temperature").innerHTML = GetParameter[0];
