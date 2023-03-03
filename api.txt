@@ -1,0 +1,30 @@
+get all user
+api/healthies
+
+get all product
+api/products
+
+get all owners
+api/owners
+
+get all parameter
+api/parameters
+
+
+Search tất cả thông số của PID
+api/healthies/SearchByPIDParameter/{keyword}
+
+Search thông số cuối cùng của PID
+api/healthies/SearchByPIDParameterDR/{keyword}
+
+Search 10 thông số cuối cùng của PID
+api/healthies/SearchByPIDParameterHistory/{keyword}
+
+Search tất cả thông tin owner của UID
+api/healthies/SearchByUIDOwner/{keyword}
+
+Search tất cả thông tin của PID
+api/healthies/SearchByPIDProduct/{keyword}
+
+Search thông tin user bằng email
+api/healthies/SearchByEmail/{keyword}
