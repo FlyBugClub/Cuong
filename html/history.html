@@ -182,9 +182,28 @@
             <div class="function">
               <div class="datepicker">
                 Form
-                <input type="datetime-local" />
+                <input id="fromDate" type="date" name="" max="" />
                 to
-                <input type="datetime-local" />
+                <input id="toDate" type="date" name="" min="" />
+                <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+                <script type="text/javascript">
+                  var fromDate;
+                  var from = document.getElementById('#fromDate').value
+                  from.on('change', function(){
+                    fromDate = $(this).val();
+                    $('#toDay').prop('min', function(){
+                      return fromDate;
+                    })
+                  });
+                  var toDate;
+                  $('#toDate').on('change', function(){
+                    toDate = $(this).val();
+                    $('#fromDay').prop('max', function(){
+                      return toDate;
+                    })
+                  });
+                </script>
+                <!-- <script src="../js/function/datepicker.js"></script> -->
               </div>
               <div class="search">
                 <a href="#line-data-chart">
