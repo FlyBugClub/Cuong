@@ -3,7 +3,7 @@ function pageLoadd() {
 
     getDetails();
     GetParameter();
-
+    checkNull();
 }
 
 //alert(localStorage.getItem("key"));
@@ -19,127 +19,114 @@ async function getDetails() {
             document.getElementById("txtDate").innerHTML = human1.Weight;
 
         }
-
     });
 }
+async function GetParameter() {
+    var GetParameter = [];
 
-// function renderHumanDetails(Human) {
-//     document.getElementById("txtID").innerHTML = Human.PID;
-//     document.getElementById("txtName").value = Human.Name;
-//     document.getElementById("txtHeight").value = Human.Height;
-//     document.getElementById("txtWeight").value = Human.Weight;
-//     document.getElementById("txtBMI").value = Human.BMI;
+    await axios.get(UR + "/SearchByPIDParameterDR/" + sessionStorage.getItem("key")).then((response) => {
+        var Human = response.data;
+        for (var human1 of Human) {
+            GetParameter.push(human1.Temperature);
+            GetParameter.push(human1.Humidity);
+            GetParameter.push(human1.Speed);
+            GetParameter.push(human1.Pressure);
+            GetParameter.push(human1.Acceleration);
+            GetParameter.push(human1.Wind_Direction);
+            GetParameter.push(human1.Speed_Of_Winds);                              
+        }
+
+        
+    });
+    // for(var i = 0;i < 7;i++)
+    // {                         
+    //     alert(GetParameter[i]);                                 
+    // }
+            
+    for(var i = 0;i < 7;i++)
+    {                         
+        if(GetParameter[i] === null)
+        {
+            bien_parameter[i]="--/---";
+        }                                         
+    }
+    for(var i = 0;i < 7;i++)
+    {                         
+        alert(GetParameter[i]);                                 
+    }
+    for(var i = 0; i < 7; i++)
+    {
+        document.getElementById("Temperature").innerHTML = GetParameter[i];
+        document.getElementById("Humidity").innerHTML = GetParameter[i];
+        document.getElementById("Speed").innerHTML = GetParameter[i];
+        document.getElementById("Pressure").innerHTML = GetParameter[i];
+        document.getElementById("Acceleration").innerHTML = GetParameter[i];
+        document.getElementById("WindD").innerHTML = GetParameter[i];
+        document.getElementById("WindS").innerHTML = GetParameter[i];
+    }
+}
+
+
+
+
+// async function GetParameter() {
+   
+//     var bienn = [];
+//     await axios.get(URL + "/SearchByPIDParameterDR/" + sessionStorage.getItem("key")).then((response) => {
+//         var healthies = response.data;
+//         for (var human1 of healthies) {
+
+//             bienn.push(human1.Temperature);
+//             bienn.push(human1.Humidity);
+//             bienn.push(human1.Speed);
+//             bienn.push(human1.Pressure);
+//             bienn.push(human1.Acceleration);
+//             bienn.push(human1.Wind_Direction);
+//             bienn.push(human1.Speed_Of_Winds);
+//         }
+
+//         for (var i = 0; i < 7; i++) {
+//             if (bienn[i] === null)
+//             {
+//                bienn[i] = "--/---";
+//             }
+//         }
+//     });
+//     addHistory();
 // }
 
-async function GetParameter() {
-
-    // await axios.get(URL + "/SearchByUIDOwner/"+sessionStorage.getItem('UID')).then((response) =>{
-    //     var healthies = response.data;
-    //      var i =0;
-    //     test = 0;
-    //     count_button_id_onclick = 0;
-    //     count = 0;
-    //      for(var human of healthies )
-    //      {
-    //          PIDc[i] =  human.PID;
-    //         i++;
-    //         alert(PIDc[i])
-    //      }
-    // });
-    // // setTimeout(async () => {
-    //     for(var j = (PIDc.length - 1);j >= 0 ;)
-    //     {
-    var bien = [];
-    var bien_parameter = [];
-    var check_parameter = [];
-    // var bien = [" "," "," "," "," "," "," "];   
-    //         j  = j -1 ;
-    await axios.get(URL + "/SearchByPIDParameterDR/sp008"/*+PIDc[j+1])*/).then(async (response) => {
-        var healthies = response.data;
-        for (var human of healthies) {
-           
-
-                if (human.Acceleration === "Y") {
-                    check_parameter.push("Acceleration");
-
-                }
-                if (human.Speed === "Y") {
-                    check_parameter.push("Speed");
-
-                }
-                if (human.Temperature === "Y") {
-                    check_parameter.push("Temperature");
-
-                }
-                if (human.Humidity === "Y") {
-                    check_parameter.push("Humidity");
-                }
-                if (human.Pressure === "Y") {
-                    check_parameter.push("Pressure");
-                }
-                if (human.Speed_Of_Winds === "Y") {
-                    check_parameter.push("Speed_Of_Winds");
-
-                }
-                if (human.Wind_Direction === "Y") {
-                    check_parameter.push("Wind_Direction");
-
-                }
-            }
-        
-
-        await axios.get(URL + "/SearchByPIDParameterDR/sp008").then((response) => {
-            var healthies = response.data;
-            for (var human1 of healthies) {
+// function addHistory()
+// {
+//     for(var i = 0; i < 7; i++)
+//     {
+//         alert(bienn[i]);
+//     }
+    
+//     document.getElementById("Temperature").innerHTML = bien[0];
+//     document.getElementById("Humidity").innerHTML = bien[1];
+//     document.getElementById("Speed").innerHTML = bien[2];
+//     document.getElementById("Pressure").innerHTML = bien[3];
+//     document.getElementById("Acceleration").innerHTML = bien[4];
+//     document.getElementById("WindD").innerHTML = bien[5];
+//     document.getElementById("WindS").innerHTML = bien[6];
+// }
 
 
 
-
-                for (var i = 0; i < check_parameter.length; i++) {
-                    if (check_parameter[i] === "Temperature") {
-                        bien.push(human1.Temperature);
-            
-                        document.getElementById("Temperature").innerHTML = human1.Temperature+"<sup>o</sup>C";
-                    }
-                    else //document.getElementById("Temperature").innerHTML = "--/---";
-                     if (check_parameter[i] === "Humidity") {
-                        document.getElementById("Humidity").innerHTML = human1.Humidity+"<sup>o</sup>F";
-                    }
-                    else //document.getElementById("Humidity").innerHTML = "--/---";
-                     if (check_parameter[i] === "Speed") {
-                        document.getElementById("Speed").innerHTML = human1.Speed;
-                    } 
-                    else //document.getElementById("Speed").innerHTML = "--/---";
-                    if (check_parameter[i] === "Pressure") {
-                        document.getElementById("Pressure").innerHTML = human1.Pressure;
-                    }   
-                    else //document.getElementById("Pressure").innerHTML = "--/---";
-                    if (check_parameter[i] === "Acceleration") {
-                        document.getElementById("Acceleration").innerHTML = human1.Acceleration;
-                    }
-                    else //document.getElementById("Acceleration").innerHTML = "--/---"; 
-                    if (check_parameter[i] === "Wind_Direction") {
-                        document.getElementById("WindD").innerHTML = human1.Wind_Direction;
-                    }
-                    else document.getElementById("WindD").innerHTML = "--/---"; 
-                    if (check_parameter[i] === "Speed_Of_Winds") {
-                        document.getElementById("WindS").innerHTML = human1.Speed_Of_Winds;
-                    }
-                }
-                
-
-
-
-
-            }
-            for(var i = 0; i < check_parameter.length; i++)
-                {
-                    if(document.getElementsByClassName("#").value = "" )
-                    {
-                        document.getElementsByClassName("#").innerHTML = "--/---";
-                    }
-                }
-        })
-    }
-    )
-}
+// for(var i = 0;i < 7;i++)
+        // {
+        //     // document.getElementById("Temperature").innerHTML = human1.Temperature;
+        //     // document.getElementById("Humidity").innerHTML = human1.Humidity;
+        //     // document.getElementById("Speed").innerHTML = human1.Speed;
+        //     // document.getElementById("Pressure").innerHTML = human1.Pressure;
+        //     // document.getElementById("Acceleration").innerHTML = human1.Acceleration;
+        //     // document.getElementById("WindD").innerHTML = human1.Wind_Direction;
+        //     // document.getElementById("WindS").innerHTML = human1.Speed_Of_Winds;
+        //     document.getElementById("Temperature").innerHTML = GetParameter[i];
+        // document.getElementById("Humidity").innerHTML = GetParameter[i];
+        // document.getElementById("Speed").innerHTML = GetParameter[i];
+        // document.getElementById("Pressure").innerHTML = GetParameter[i];
+        // document.getElementById("Acceleration").innerHTML = GetParameter[i];
+        // document.getElementById("WindD").innerHTML = GetParameter[i];
+        // document.getElementById("WindS").innerHTML = GetParameter[i];
+        // }
