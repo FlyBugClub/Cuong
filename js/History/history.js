@@ -1,4 +1,4 @@
-var UR = "https://digi27.azurewebsites.net/api/healthies";
+var UR = "https://digiaw.azurewebsites.net/api/healthies";
 function pageLoadd() {
 
     getDetails();

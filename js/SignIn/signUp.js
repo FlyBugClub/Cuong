@@ -1,4 +1,4 @@
-const URL = "https://digi27.azurewebsites.net/api/healthies";
+const URL = "https://digiaw.azurewebsites.net/api/healthies";
 
 var replace_email;
 var count;
