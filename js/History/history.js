@@ -67,7 +67,10 @@ async function GetParameter() {
 }
 
 
-
+function searchhistory()
+{
+    alert(document.getElementById("pickdate1").value);
+}
 
 // async function GetParameter() {
    
