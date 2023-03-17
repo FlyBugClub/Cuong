@@ -1,9 +1,10 @@
 var UR = "https://digiaw.azurewebsites.net/api/healthies";
+var Dat = [];
 function pageLoadd() {
 
     getDetails();
     GetParameter();
-    checkNull();
+    // checkNull();
 }
 
 //alert(localStorage.getItem("key"));
@@ -67,9 +68,36 @@ async function GetParameter() {
 }
 
 
-function searchhistory()
+async function report()
 {
-    alert(document.getElementById("pickdate1").value);
+    Datetime = document.getElementById("datetimes").value.split(" - ");
+    var url = UR + "/SearchByPIDParameterHistory2/" +sessionStorage.getItem("key")+"/"+ Datetime[0].replace(/\//g,"-").replace(/ /g,",").replace(":",";") +"/"+Datetime[1].replace(/\//g,"-").replace(/ /g,",").replace(":",";");
+    // alert(url);
+    await axios.get(url).then((response) => {
+       
+        var Human = response.data;
+        
+            
+            
+            if(Human == "")
+                {
+                    alert("ko có dư liệu");
+                }
+                else
+                {
+                    const headers = Object.keys(Human[0]).join();
+                    const content = Human.map(value => Object.values(value).join());
+                    const csv = [headers].concat(content).join("\n");
+                    const element = document.createElement('a');
+                    element.href = 'data:text/csv;charset=utf-8,' + encodeURI(csv);
+                    element.target = '_blank';
+                    element.download = 'report.csv';
+                    element.click();
+                }
+            
+        
+        
+    })
 }
 
 // async function GetParameter() {
