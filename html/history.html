@@ -22,6 +22,7 @@
     <link rel="stylesheet" href="../css/ontop.css" />
 
     <!-- Script -->
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="../Script/jquery.js"></script>
     <script
       type="text/javascript"
@@ -203,23 +204,7 @@
             </select>
           </div> -->
           <div class="container">
-            <div class="function">
-              <div class="datepicker">
-                <i class="fa-solid fa-calendar"></i>
-                <input id="datetimes" type="text" name="datetimes" readonly />
-                <script src="../js/function/datepicker.js"></script>
-              </div>
-              <div class="search">
-                <a href="#line-data-chart">
-                  <button id="btn-search">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                  </button>
-                </a>
-              </div>
-              <div class="report">
-                <button onclick="report()">Report</button>
-              </div>
-            </div>
+            
             <div class="row">
               <div class="col detail-info">
                 <h3>device information</h3>
@@ -614,6 +599,28 @@
             </div>
           </div>
 
+
+
+          <!--Input Date-->
+          <div class="function">
+            <div class="datepicker">
+              <i class="fa-solid fa-calendar"></i>
+              <input id="datetimes" type="text" name="datetimes" readonly />
+              <script src="../js/function/datepicker.js"></script>
+            </div>
+            <div class="search">
+              <a href="#line-data-chart">
+                <button onclick="reportChart()" id="btn-search">
+                  <i class="fa-solid fa-magnifying-glass"></i>
+                </button>
+              </a>
+            </div>
+            <div class="report">
+              <button onclick="report()">Report</button>
+            </div>
+          </div>
+          <!--Close Input Date-->
+
           <div class="container-circle-graph" id="line-data-chart">
             <div class="row">
               <div class="col graph-data">
@@ -636,6 +643,8 @@
                     <figure class="highcharts-figure">
                       <div id="container"></div>
                     </figure>
+
+
                     <!-- LINE CHART -->
                     <script>
                       Highcharts.chart("container", {
@@ -666,7 +675,7 @@
                         },
                         plotOptions: {
                           series: {
-                            pointStart: 2012,
+                            pointStart: 1000,
                           },
                           area: {
                             stacking: "normal",
@@ -680,48 +689,66 @@
                         },
                         series: [
                           {
-                            name: "Ocean transport",
+                            name: "Acceleration",
                             data: [
-                              13234, 12729, 11533, 17798, 10398, 12811, 15483,
-                              16196, 16214,
+                              0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20
                             ],
                           },
                           {
-                            name: "Households",
+                            name: "Speed",
                             data: [
-                              6685, 6535, 6389, 6384, 6251, 5725, 5631, 5047,
-                              5039,
+                              45.0,45.0,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,
                             ],
                           },
                           {
-                            name: "Agriculture and hunting",
+                            name: "Temperature",
                             data: [
-                              4752, 4820, 4877, 4925, 5006, 4976, 4946, 4911,
-                              4913,
+                              30.0,30.0,
                             ],
                           },
                           {
-                            name: "Air transport",
+                            name: "Humidity",
                             data: [
-                              3164, 3541, 3898, 4115, 3388, 3569, 3887, 4593,
-                              1550,
+                              90.0,90.0,
                             ],
                           },
                           {
-                            name: "Construction",
+                            name: "Speed_Of_Winds",
                             data: [
-                              2019, 2189, 2150, 2217, 2175, 2257, 2344, 2176,
-                              2186,
+                              0,0,
+                            ],
+                          },{
+                            name: "Wind_Direction",
+                            data: [
+                              0,0,
+                            ],
+                          },
+                          {
+                            name: "Speed_Of_Winds",
+                            data: [
+                              0,0,
                             ],
                           },
                         ],
                       });
                     </script>
+                    <!-- CLOSE LINE CHART -->
                   </div>
                 </div>
               </div>
             </div>
           </div>
+          <!--Mo chart test-->
+          <div>
+            
+             
+             
+           <div id="curve_chart" style="width: 900px; height: 500px"></div>
+              
+            
+            
+          </div>
+          <!--dong chart test-->
         </div>
       </div>
     </section>
