@@ -164,25 +164,7 @@ async function report() {
 // document.getElementById("WindS").innerHTML = GetParameter[i];
 // }
 
-var simpleEncoding =
-    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
-// This function scales the submitted values so that
-// maxVal becomes the highest value.
-function simpleEncode(valueArray, maxValue) {
-    var chartData = ['s:'];
-    for (var i = 0; i < valueArray.length; i++) {
-        var currentValue = valueArray[i];
-        if (!isNaN(currentValue) && currentValue >= 0) {
-            chartData.push(simpleEncoding.charAt(Math.round((simpleEncoding.length - 1) *
-                currentValue / maxValue)));
-        }
-        else {
-            chartData.push('_');
-        }
-    }
-    return chartData.join('');
-}
 async function reportChart() {
     Datetime = document.getElementById("datetimes").value.split(" - ");
     var url = UR + "/SearchByPIDParameterHistory2/" + sessionStorage.getItem("key") + "/" + Datetime[0].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";") + "/" + Datetime[1].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";");
