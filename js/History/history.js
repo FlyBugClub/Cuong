@@ -164,12 +164,32 @@ async function report() {
 // document.getElementById("WindS").innerHTML = GetParameter[i];
 // }
 
+var simpleEncoding =
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+
+// This function scales the submitted values so that
+// maxVal becomes the highest value.
+function simpleEncode(valueArray, maxValue) {
+    var chartData = ['s:'];
+    for (var i = 0; i < valueArray.length; i++) {
+        var currentValue = valueArray[i];
+        if (!isNaN(currentValue) && currentValue >= 0) {
+            chartData.push(simpleEncoding.charAt(Math.round((simpleEncoding.length - 1) *
+                currentValue / maxValue)));
+        }
+        else {
+            chartData.push('_');
+        }
+    }
+    return chartData.join('');
+}
 async function reportChart() {
     Datetime = document.getElementById("datetimes").value.split(" - ");
     var url = UR + "/SearchByPIDParameterHistory2/" + sessionStorage.getItem("key") + "/" + Datetime[0].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";") + "/" + Datetime[1].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";");
     alert(Datetime);
     alert(url);
     var GetParameterr = [];
+    
     await axios.get(url).then((response) => {
 
         var Human = response.data;
@@ -195,30 +215,50 @@ async function reportChart() {
                 GetParameterr[i] = "0";
             }
         }
-
+        //var mang = [];
         //for (var i = 0; i < GetParameterr.length; i++) {
-            //alert(GetParameterr[i]);
+        //alert(GetParameterr[i]);
         //}
-        // for(i = 0; i < GetParameterr.length ; i++)
-        // {
-            var data = google.visualization.arrayToDataTable([
-                ['Year', 'Temperature', 'Humidity', 'Speed', 'Pressure', 'Acceleration','Speed_Of_Winds', 'Wind_Direction'],
-                ['2004', GetParameterr[i], GetParameterr[1], GetParameterr[2], GetParameterr[3], GetParameterr[4], 100,100],
-                ['2005', 1170, 460, 400, 10, 10, 100, 100],
-                ['2006', 660, 1120, 600, 10, 10, 100, 100],
-                ['2007', 1030, 540, 200, 10, 10, 100, 100]
-            ]);
-        // }
+
+
+        //  for(i = 0; i < GetParameterr.length ; i++)
+        //  {
+        //     for(i = 0; i < 7; i++)
+        //     {
+
+        //     }
+        //  }
+
+
+
+            //for(i = 0; i < 7; i++)
+        //alert(GetParameterr[i]);
+
         
-    
+        var data = google.visualization.arrayToDataTable([
+            
+            ['', ''],// sau dau , khong truyen bien duoc neu khong se bi loi
+            ['Temperature', GetParameterr[0]],
+            ['Humidity', GetParameterr[1]],
+            ['Speed', GetParameterr[2]],
+            ['Pressure', GetParameterr[3]],
+            ['Acceleration', GetParameterr[4]],
+            ['Speed_Of_Winds', GetParameterr[5]],
+            ['Wind_Direction', GetParameterr[6]],
+            ['', 0] // thay het tat ca la bien se bi loi
+            
+        ]);
+        //}
+
+
         var options = {
             title: 'Company Performance',
             curveType: 'function',
             legend: { position: 'bottom' }
         };
-    
+
         var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
-    
+
         chart.draw(data, options);
     })
 }
@@ -227,5 +267,5 @@ async function reportChart() {
 
 
 function drawChart() {
-    
+
 }
