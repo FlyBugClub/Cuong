@@ -168,8 +168,7 @@ async function report() {
 async function reportChart() {
     Datetime = document.getElementById("datetimes").value.split(" - ");
     var url = UR + "/SearchByPIDParameterHistory2/" + sessionStorage.getItem("key") + "/" + Datetime[0].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";") + "/" + Datetime[1].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";");
-    alert(Datetime);
-    alert(url);
+    
     var GetParameterr = [];
     
     await axios.get(url).then((response) => {
