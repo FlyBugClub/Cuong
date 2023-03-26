@@ -100,7 +100,114 @@ async function report() {
     })
 }
 
+async function reportChart2()
+{
+  Datetime = document.getElementById("datetimes").value.split(" - ");
+  var url = UR + "/SearchByPIDParameterHistory2/" + sessionStorage.getItem("key") + "/" + Datetime[0].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";") + "/" + Datetime[1].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";");
+  var GetParameterr0 = [], GetParameterr1 = [],GetParameterr2 = [],GetParameterr3 = [],GetParameterr4 = []
+    ,GetParameterr5 = [],GetParameterr6 = [];
+  await axios.get(url).then((response) => {
 
+    var Human = response.data;
+
+
+
+    if (Human == "") {
+        alert("ko có dư liệu");
+    }
+    else {
+      for (var human1 of Human) {
+        GetParameterr0.push(human1.Temperature);
+        GetParameterr1.push(human1.Humidity);
+        GetParameterr2.push(human1.Speed);
+        GetParameterr3.push(human1.Pressure);
+        GetParameterr4.push(human1.Acceleration);
+         GetParameterr5.push(human1.Wind_Direction);
+         GetParameterr6.push(human1.Speed_Of_Winds);
+        
+
+
+
+    }
+
+    Highcharts.chart("container", {
+      chart: {
+        type: "area",
+      },
+      title: {
+        text: "",
+        align: "left",
+      },
+      subtitle: {
+        text:
+          "Source: " +
+          '<a href="https://www.ssb.no/en/statbank/table/09288/"' +
+          'target="_blank">SSB</a>',
+        align: "left",
+      },
+      yAxis: {
+        title: {
+          useHTML: true,
+          text: "Million tonnes CO<sub>2</sub>-equivalents",
+        },
+      },
+      tooltip: {
+        shared: true,
+        headerFormat:
+          '<span style="font-size:12px"><b>{point.key}</b></span><br>',
+      },
+      plotOptions: {
+        series: {
+          pointStart: 1,
+          
+        },
+        area: {
+          stacking: "normal",
+          lineColor: "#666666",
+          lineWidth: 100,
+          marker: {
+            lineWidth: 1,
+            lineColor: "#666666",
+          },
+        },
+      },
+      series: [
+        {
+          name: "Temperature",
+          data: GetParameterr0,
+        },
+        
+        {
+          name: "Humidity",
+          data: GetParameterr1,
+        },
+        {
+          name: "Speed",
+          data:  GetParameterr2,
+        },
+        {
+          name: "Pressure",
+          data: GetParameterr3,
+        },
+        {
+          name: "Acceleration",
+          data: GetParameterr4,
+        },{
+          name: "Wind_Direction",
+          data: GetParameterr5,
+        },
+        {
+          name: "Speed_Of_Winds",
+          data: GetParameterr6,
+        },
+      ],
+    });
+
+    }
+})
+
+
+}
 
 // async function GetParameter() {
 
