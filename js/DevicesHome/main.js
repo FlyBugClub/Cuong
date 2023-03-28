@@ -24,9 +24,9 @@ btn.style.color = "black"
 btn.style.textDecoration = "none"
 
 async function check() {
-    // email = sessionStorage.getItem('email');
-    // document.getElementById("user-name").innerHTML = email.replace(',','.');
-    await axios.get(URL + "/SearchByEmail/tr6r20@gmail,com" ).then((response) => {
+    email = sessionStorage.getItem('email');
+    document.getElementById("user-name").innerHTML = email.replace(',','.');
+    await axios.get(URL + "/SearchByEmail/"+email ).then((response) => {
         var healthies = response.data;
 
         for (var human of healthies) {
