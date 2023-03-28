@@ -7,15 +7,15 @@ function pageLoadd() {
 
   getDetails();
   GetParameter();
-  reportChart();
+  // reportChart();
   // checkNull();
-  //drawChart();
+  drawChart();
 }
 
 //alert(localStorage.getItem("key"));
 
 async function getDetails() {
-  alert(sessionStorage.getItem("key"));
+  // alert(sessionStorage.getItem("key"));
   await axios.get(UR + "/SearchByPIDProduct/" + sessionStorage.getItem("key")).then((response) => {
     var Human = response.data;
     for (var human1 of Human) {
@@ -101,111 +101,107 @@ async function report() {
   })
 }
 
-async function reportChartLoiNgay() {
+async function reportChartMoiDangTest() {
   Datetime = document.getElementById("datetimes").value.split(" - ");
   var url = UR + "/SearchByPIDParameterHistory2/" + sessionStorage.getItem("key") + "/" + Datetime[0].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";") + "/" + Datetime[1].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";");
-  alert(url);
-  var GetParameterr0 = [], GetParameterr1 = [], GetParameterr2 = [], GetParameterr3 = [], GetParameterr4 = []
-    , GetParameterr5 = [], GetParameterr6 = [], GetParameterr7 = [];
+  // alert(url);
+  var thongTinn = [];
   await axios.get(url).then((response) => {
 
-    var Human = response.data;
-
-
-
+    var Human = response.data
     if (Human == "") {
       alert("ko có dư liệu");
     }
     else {
       for (var human1 of Human) {
-        GetParameterr0.push(human1.Temperature);
-        GetParameterr1.push(human1.Humidity);
-        GetParameterr2.push(human1.Speed);
-        GetParameterr3.push(human1.Pressure);
-        GetParameterr4.push(human1.Acceleration);
-        GetParameterr5.push(human1.Wind_Direction);
-        GetParameterr6.push(human1.Speed_Of_Winds);
-        GetParameterr7.push(human1.Current_Time);
+        var MangHungGiaTri = [];
+        var date1 = human1.Current_Time.split(" ");
+        var date2 = date1[1].split(":");
+        if (date1[2] === "PM" )
+        {
+          date2[0] = String(parseInt(date2[0]) + 12);
+        }
+        MangHungGiaTri.push(date1[0]+" "+date2[0]+":"+date2[1]);
+        if(human1.Temperature === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Temperature);
+
+        if(human1.Humidity === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Humidity);
+
+        if(human1.Speed === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Speed);
+
+        if(human1.Acceleration === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Acceleration);
+
+        if(human1.Speed_Of_Winds === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Speed_Of_Winds);
+
+        if(human1.Wind_Direction === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Wind_Direction);
+        if(human1.Pressure === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Pressure);
+
+        thongTinn.push(MangHungGiaTri);
       }
-
-
-      Highcharts.chart("container", {
-        chart: {
-          type: "area",
-        },
-        title: {
-          text: "",
-          align: "left",
-        },
-        subtitle: {
-          text:
-            "Source: " +
-            '<a href="https://www.ssb.no/en/statbank/table/09288/"' +
-            'target="_blank">SSB</a>',
-          align: "left",
-        },
-        yAxis: {
-          title: {
-            useHTML: true,
-            text: "Million tonnes CO<sub>2</sub>-equivalents",
-          },
-        },
-        tooltip: {
-          shared: true,
-          headerFormat:
-            '<span style="font-size:12px"><b>{point.key}</b></span><br>',
-        },
-        plotOptions: {
-          series: {
-            pointStart: 1,
-            pointInterval: 1
-
-          },
-          area: {
-            stacking: "normal",
-            lineColor: "#666666",
-            lineWidth: 100,
-            marker: {
-              lineWidth: 1,
-              lineColor: "#666666",
-            },
-          },
-        },
-        series: [
-          {
-            name: "Temperature",
-            data: GetParameterr0,
-          },
-
-          {
-            name: "Humidity",
-            data: GetParameterr1,
-          },
-          {
-            name: "Speed",
-            data: GetParameterr2,
-          },
-          {
-            name: "Pressure",
-            data: GetParameterr3,
-          },
-          {
-            name: "Acceleration",
-            data: GetParameterr4,
-          }, {
-            name: "Wind_Direction",
-            data: GetParameterr5,
-          },
-          {
-            name: "Speed_Of_Winds",
-            data: GetParameterr6,
-          },
-        ],
-      });
-
+      var i = 0;
+      flag = true;
     }
   })
+  // alert("noi dung cua thongTin1:");
+  // alert(thongTin1);
+  var i = 0;
+  // alert(GetParameterrr0, GetParameterrr1);
+  var data = new google.visualization.DataTable();
+   data.addColumn('string', 'Date/Time');
+   data.addColumn('number', 'Tem');
+   data.addColumn('number', 'hud');
+   data.addColumn('number', 'spee');
+   data.addColumn('number', 'arlear');
+   data.addColumn('number', 'speedwind');
+   data.addColumn('number', 'Wind_Direction');
+   data.addColumn('number', 'presure');
+   
+   data.addRows(
+    thongTinn
+   );
+  
+  // var data = google.visualization.arrayToDataTable(
 
+  //     thongTin1
+  //     // ['Year', 'Sales', 'Expenses'],['2004',1000,400],['2005',1170,460]
+  //   );
+
+  var options = {
+    title: 'Company Performance',
+    curveType: 'function',
+    legend: { position: 'bottom' }
+  };
+
+  var chart = new google.visualization.LineChart(document.getElementById('curve_chart'));
+
+  chart.draw(data, options);
 
 }
 
@@ -472,10 +468,11 @@ async function drawChart() {
 
   Datetime = document.getElementById("datetimes").value.split(" - ");
   var thongTinn = [];
-  var thongTin1 = ['Year', 'Temperature'];
-  var url = "https://digiaw.azurewebsites.net/api/healthies/SearchByPIDParameterHistory2/SP009/12-20-2022,02;00,PM/03-27-2023,02;51,PM"
-  alert(url);
-  var GetParameterrr0 = [], GetParameterrr1 = [], GetParameterrr2 = [], GetParameterrr3 = [], GetParameterrr4 = [], GetParameterrr5 = [], GetParameterrr6 = [];
+ 
+  // var url = "https://digiaw.azurewebsites.net/api/healthies/SearchByPIDParameterHistory2/SP009/12-20-2022,02;00,PM/03-27-2023,02;51,PM"
+  // alert(url);
+  var url = UR + "/SearchByPIDParameterHistory/" + sessionStorage.getItem("key");
+  
   await axios.get(url).then((response) => {
 
     var Human = response.data
@@ -484,49 +481,84 @@ async function drawChart() {
     }
     else {
       for (var human1 of Human) {
-        GetParameterrr0.push(human1.Temperature);
-        GetParameterrr1.push(human1.Humidity);
-        GetParameterrr2.push(human1.Speed);
-        GetParameterrr3.push(human1.Pressure);
-        GetParameterrr4.push(human1.Acceleration);
-        GetParameterrr5.push(human1.Wind_Direction);
-        GetParameterrr6.push(human1.Speed_Of_Winds);
+        var MangHungGiaTri = [];
+        var date1 = human1.Current_Time.split(" ");
+        var date2 = date1[1].split(":");
+        if (date1[2] === "PM" )
+        {
+          date2[0] = String(parseInt(date2[0]) + 12);
+        }
+        MangHungGiaTri.push(date1[0]+" "+date2[0]+":"+date2[1]);
+        if(human1.Temperature === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Temperature);
 
+        if(human1.Humidity === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Humidity);
+
+        if(human1.Speed === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Speed);
+
+        if(human1.Acceleration === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Acceleration);
+
+        if(human1.Speed_Of_Winds === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Speed_Of_Winds);
+
+        if(human1.Wind_Direction === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Wind_Direction);
+        if(human1.Pressure === null)
+        {
+          MangHungGiaTri.push(0);
+        }
+        else MangHungGiaTri.push(human1.Pressure);
+
+        thongTinn.push(MangHungGiaTri);
       }
-
-
-      
       var i = 0;
       flag = true;
-      
-      for (var i = 0; i < 3; i++){
-      //for (var human1 of Human) {
-
-        
-        thongTinn.push([GetParameterrr0[i], GetParameterrr1[i]]);
-
-
-
-        
-      }
     }
   })
-  alert("noi dung cua thongTin1:");
-  alert(thongTin1);
-  alert("noi dung cua thongTinn:");
-  alert(thongTinn);
-  alert("noi dung cua thongTinn[0]:");
-  alert(thongTinn[0]);
-  alert("neu sua dong 527 thanh thongTinn[0] thi chart se chay !!");
+  // alert("noi dung cua thongTin1:");
+  // alert(thongTin1);
   var i = 0;
   // alert(GetParameterrr0, GetParameterrr1);
+  var data = new google.visualization.DataTable();
+   data.addColumn('string', 'Date/Time');
+   data.addColumn('number', 'Tem');
+   data.addColumn('number', 'hud');
+   data.addColumn('number', 'spee');
+   data.addColumn('number', 'arlear');
+   data.addColumn('number', 'speedwind');
+   data.addColumn('number', 'Wind_Direction');
+   data.addColumn('number', 'presure');
+   
+   data.addRows(
+    thongTinn
+   );
+  
+  // var data = google.visualization.arrayToDataTable(
 
-  var data = google.visualization.arrayToDataTable([
-
-      thongTin1,
-      thongTinn
-      // ['Year', 'Sales', 'Expenses'],['2004',1000,400],['2005',1170,460]
-    ]);
+  //     thongTin1
+  //     // ['Year', 'Sales', 'Expenses'],['2004',1000,400],['2005',1170,460]
+  //   );
 
   var options = {
     title: 'Company Performance',
