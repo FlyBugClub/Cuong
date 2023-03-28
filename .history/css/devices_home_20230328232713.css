@@ -71,11 +71,11 @@ table{
 }
 
 table tbody{
-    background-color: rgb(238, 238, 238);
+    background-color: rgb(223, 187, 187);
 }
 
 table tr:hover td{
-  background-color: rgb(218, 218, 218);
+  background-color: rgb(241, 6, 6);
 }
 
 table td,th{

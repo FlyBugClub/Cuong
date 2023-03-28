@@ -183,7 +183,7 @@ function MakeTable() {
   for (var i = 0; i < countRow; i++) {
     var tagRow = document.createElement("tr");
     tagRow.style.width = "fix-content";
-    tagRow.style.fontSize = "16px";
+    tagRow.style.fontSize = "200px";
     tagTable.appendChild(tagRow);
 
     for (var j = 0; j < countColumn; j++) {

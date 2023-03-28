@@ -75,7 +75,7 @@ table tbody{
 }
 
 table tr:hover td{
-  background-color: rgb(218, 218, 218);
+  background-color: rgb(201, 0, 0);
 }
 
 table td,th{

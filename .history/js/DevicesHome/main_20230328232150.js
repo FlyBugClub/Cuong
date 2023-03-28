@@ -135,6 +135,20 @@ async function GetParameter() {
   AddTable(bang);
 }
 
+window.onload = function () {
+    var tfrow = document.getElementById("tfhover").rows.length;
+    var tbRow = [];
+    for (var i = 1; i < tfrow; i++) {
+      tbRow[i] = document.getElementById("tfhover").rows[i];
+      #tfhover td {
+        background-color: #fff;
+    }
+    #tfhover td:hover {
+        background-color: #f3f8aa;
+    }
+    }
+  };
+
 function AddTable(bien, bien_parameter) {
   for (var i = 0; i < test; i++) {
     str += "<tr id =" + i + " class = 'device'>";

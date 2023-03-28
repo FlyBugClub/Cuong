@@ -63,19 +63,15 @@ b {
 
 table{
     width: 100%;
+    min-width: 1500px;
 }
 
 .cate{
     border-right: 1px solid rgb(221, 221, 221);
-    width: 100px;
 }
 
 table tbody{
-    background-color: rgb(238, 238, 238);
-}
-
-table tr:hover td{
-  background-color: rgb(218, 218, 218);
+    background-color: rgb(223, 187, 187);
 }
 
 table td,th{
@@ -140,7 +136,7 @@ table tbody tr.device{
 
 .table-scroll table {
   width: 100%;
-  min-width: 1600px;
+  min-width: 100px;
   margin: auto;
   /* border-collapse: separate; */
 }
