@@ -610,7 +610,7 @@
             </div>
             <div class="search">
               <a href="#line-data-chart">
-                <button onclick="reportChart2()" id="btn-search">
+                <button onclick="reportChartMoiDangTest()" id="btn-search">
                   <i class="fa-solid fa-magnifying-glass"></i>
                 </button>
               </a>
@@ -646,92 +646,7 @@
 
 
                     <!-- LINE CHART -->
-                    <script>
-                      Highcharts.chart("container", {
-                        chart: {
-                          type: "area",
-                        },
-                        title: {
-                          text: "",
-                          align: "left",
-                        },
-                        subtitle: {
-                          text:
-                            "Source: " +
-                            '<a href="https://www.ssb.no/en/statbank/table/09288/"' +
-                            'target="_blank">SSB</a>',
-                          align: "left",
-                        },
-                        yAxis: {
-                          title: {
-                            useHTML: true,
-                            text: "Million tonnes CO<sub>2</sub>-equivalents",
-                          },
-                        },
-                        tooltip: {
-                          shared: true,
-                          headerFormat:
-                            '<span style="font-size:12px"><b>{point.key}</b></span><br>',
-                        },
-                        plotOptions: {
-                          series: {
-                            pointStart: 1000,
-                          },
-                          area: {
-                            stacking: "normal",
-                            lineColor: "#666666",
-                            lineWidth: 1,
-                            marker: {
-                              lineWidth: 1,
-                              lineColor: "#666666",
-                            },
-                          },
-                        },
-                        series: [
-                          {
-                            name: "Acceleration",
-                            data: [
-                              0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20
-                            ],
-                          },
-                          {
-                            name: "Speed",
-                            data: [
-                              45.0,45.0,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,0,45.0,10,20,
-                            ],
-                          },
-                          {
-                            name: "Temperature",
-                            data: [
-                              30.0,30.0,
-                            ],
-                          },
-                          {
-                            name: "Humidity",
-                            data: [
-                              90.0,90.0,
-                            ],
-                          },
-                          {
-                            name: "Speed_Of_Winds",
-                            data: [
-                              0,0,
-                            ],
-                          },{
-                            name: "Wind_Direction",
-                            data: [
-                              0,0,
-                            ],
-                          },
-                          {
-                            name: "Speed_Of_Winds",
-                            data: [
-                              0,0,
-                            ],
-                          },
-                        ],
-                      });
-                    </script>
+                    
                     <!-- CLOSE LINE CHART -->
                   </div>
                 </div>
@@ -752,5 +667,7 @@
         </div>
       </div>
     </section>
+    
+      
   </body>
 </html>
