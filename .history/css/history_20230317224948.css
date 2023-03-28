@@ -262,13 +262,13 @@ td {
 /* ----------------------------------------------------- */
 
 #container {
-  height: 500px;
+  height: 400px;
 }
 
 .highcharts-figure,
 .highcharts-data-table table {
   min-width: 310px;
-  max-width: 1000px;
+  max-width: 900px;
   margin: 1em auto;
 }
 
