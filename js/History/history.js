@@ -104,7 +104,7 @@ async function report() {
 async function reportChartMoiDangTest() {
   Datetime = document.getElementById("datetimes").value.split(" - ");
   var url = UR + "/SearchByPIDParameterHistory2/" + sessionStorage.getItem("key") + "/" + Datetime[0].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";") + "/" + Datetime[1].replace(/\//g, "-").replace(/ /g, ",").replace(":", ";");
-  // alert(url);
+   alert(url);
   var thongTinn = [];
   await axios.get(url).then((response) => {
 
@@ -539,6 +539,7 @@ async function drawChart() {
   // alert("noi dung cua thongTin1:");
   // alert(thongTin1);
   var i = 0;
+  thongTinn.reverse();
   // alert(GetParameterrr0, GetParameterrr1);
   var data = new google.visualization.DataTable();
    data.addColumn('string', 'Date/Time');
