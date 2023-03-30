@@ -23,12 +23,12 @@ function ResendEmail()
     }) 
     .catch((err) => console.log(err));
 
-    document.getElementById("ist").value != "" 
-    document.getElementById("sec").value != ""
-    document.getElementById("third").value != ""
-    document.getElementById("fourth").value != ""
-    document.getElementById("fifth").value != ""
-    document.getElementById("sixth").value != ""
+    document.getElementById("ist").value = "" 
+     document.getElementById("sec").value = ""
+     document.getElementById("third").value = ""
+     document.getElementById("fourth").value = ""
+     document.getElementById("fifth").value = ""
+     document.getElementById("sixth").value = ""
     document.getElementById("ist").focus();
 
 }

@@ -43,7 +43,9 @@ function btnOTPSubmit()
     +document.getElementById("eighth").value;
     if (Otp === real_email)
     {
-        UpdatePassWord(document.getElementById("txtForgotPasswordEmail").value,date2,real_email);
+        document.getElementById("cuong1").style.display = "none";
+            document.getElementById("cuong2").style.display = "block";
+        // UpdatePassWord(document.getElementById("txtForgotPasswordEmail").value,date2,real_email);
     }
     else
     {
@@ -62,10 +64,7 @@ function UpdatePassWord(password,date,email) {
         }   
     });
 }
-function payload()
-{
-    sendEmail();
-}
+
 function sendEmail()
 {
     RandomOTP();
@@ -91,7 +90,21 @@ function RandomOTP() {
 	real_email = uniquechar;
 }
 
+function resent()
+{
+    sendEmail();
+    document.getElementById("ist").value = "" 
+     document.getElementById("sec").value = ""
+     document.getElementById("third").value = ""
+     document.getElementById("fourth").value = ""
+     document.getElementById("fifth").value = ""
+     document.getElementById("sixth").value = ""
+     document.getElementById("seventh").value = ""
+     document.getElementById("eighth").value = ""
+     document.getElementById("txtNote_fgpw").innerHTML = "";
+     document.getElementById("ist").focus(); 
 
+}
 
 function btnForgotPassword()
 {
@@ -100,8 +113,10 @@ function btnForgotPassword()
         checkValidate();
         if(validate)
         {
+            sendEmail();
             document.getElementById("cuong").style.display = "none";
             document.getElementById("cuong1").style.display = "block";
+            
         }
     }
           , 800);
