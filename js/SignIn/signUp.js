@@ -3,6 +3,7 @@ const URL = "https://digiaw.azurewebsites.net/api/healthies";
 var replace_email;
 var count;
 var count_otp = 0;
+var real_email;
 var Otp;
 var validate,checkEmail;
 var Hour;
@@ -10,6 +11,27 @@ var OTP;
 const serviceID = "service_llvpnwi";
 const templateID = "template_njqzjob";
 
+function ResendEmail()
+{
+    RandomOTP();
+    var params = {
+        name : "DigiTechnology",
+        email: document.getElementById("txtEmail").value,
+        message : real_email,
+    }
+    emailjs.send(serviceID,templateID,params).then((res) =>{
+    }) 
+    .catch((err) => console.log(err));
+
+    document.getElementById("ist").value != "" 
+    document.getElementById("sec").value != ""
+    document.getElementById("third").value != ""
+    document.getElementById("fourth").value != ""
+    document.getElementById("fifth").value != ""
+    document.getElementById("sixth").value != ""
+    document.getElementById("ist").focus();
+
+}
 function clickEvent(first,last){
     if(first.value.length){
       document.getElementById(last).focus();
@@ -20,7 +42,8 @@ function clickEvent(first,last){
     && document.getElementById("third").value != ""
     && document.getElementById("fourth").value != ""
     && document.getElementById("fifth").value != ""
-    && document.getElementById("sixth").value != "")
+    && document.getElementById("sixth").value != ""
+    )
     {
         btnOTPSubmit();
     }
@@ -59,7 +82,7 @@ function btnOTPSubmit()
     }
     else
     {
-        alert("sai otp");
+        document.getElementById("txtNote2").innerHTML = "*OTP aren't correct";
     }
 }
 function sendEmail()
@@ -200,7 +223,8 @@ function addNew(newHuman) {
             window.location.href = "../index.html ";
         }else
         {
-            alert('Error! An error occurred. Please try again later');
+            document.getElementById("txtNote").innerHTML = "*Error! An error occurred. Please try again later";
+            
         }   
     });
 }

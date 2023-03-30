@@ -1,21 +1,98 @@
 const URL = "https://digiaw.azurewebsites.net/api/healthies";
 var replace_email1;
 var searchByEmail;
+var real_email;
 var validate,checkEmail;
 const serviceID = "service_llvpnwi";
 const templateID = "template_njqzjob";
 
+
+
+
+function clickEvent(first,last){
+    if(first.value.length){
+      document.getElementById(last).focus();
+    }
+    
+    if(document.getElementById("ist").value != "" 
+    && document.getElementById("sec").value != ""
+    && document.getElementById("third").value != ""
+    && document.getElementById("fourth").value != ""
+    && document.getElementById("fifth").value != ""
+    && document.getElementById("sixth").value != ""
+    && document.getElementById("seventh").value != ""
+    && document.getElementById("eighth").value != ""
+    )
+    {
+        btnOTPSubmit();
+    }
+  }
+function btnOTPSubmit()
+{
+    var date = new Date();
+    var month =date.getFullYear()+ "-" +(date.getMonth()+1) +"-" +(date.getDate());
+    var time = date.getHours()+":"+date.getMinutes()+":"+date.getSeconds();
+    var date2 = month +" "+time;
+    Otp = document.getElementById("ist").value
+    +document.getElementById("sec").value
+    +document.getElementById("third").value
+    +document.getElementById("fourth").value
+    +document.getElementById("fifth").value
+    +document.getElementById("sixth").value
+    +document.getElementById("seventh").value
+    +document.getElementById("eighth").value;
+    if (Otp === real_email)
+    {
+        UpdatePassWord(document.getElementById("txtForgotPasswordEmail").value,date2,real_email);
+    }
+    else
+    {
+        document.getElementById("txtNote_fgpw").innerHTML = "*OTP aren't correct";
+    }
+}
+function UpdatePassWord(password,date,email) {
+    axios.post(URL + "updatepassword" , password,date,email).then((response) =>{
+        var result = response.data;
+        if(result){
+            window.location.href = "../index.html ";
+        }else
+        {
+            document.getElementById("txtNote").innerHTML = "*Error! An error occurred. Please try again later";
+            
+        }   
+    });
+}
+function payload()
+{
+    sendEmail();
+}
 function sendEmail()
 {
+    RandomOTP();
     var params = {
         name : "DigiTechnology",
         email: document.getElementById("txtForgotPasswordEmail").value,
-        message : "https://digi-devices-controller.netlify.app/html/reset-password.html",
+        message : real_email,
     }
     emailjs.send(serviceID,templateID,params).then((res) =>{
     }) 
     .catch((err) => console.log(err));
 }
+
+
+function RandomOTP() {
+
+	var uniquechar = "";
+	const randomchar = "0123456789";
+	for (let i = 1; i < 9; i++) {
+		uniquechar += randomchar.charAt(
+			Math.random() * randomchar.length)
+	}
+	real_email = uniquechar;
+}
+
+
+
 function btnForgotPassword()
 {
     searchByEmail();    
@@ -23,14 +100,8 @@ function btnForgotPassword()
         checkValidate();
         if(validate)
         {
-            
-            document.getElementById("txtForgotPasswordNote").innerHTML = "";
-            sendEmail();
-            localStorage.setItem('forgotemail',replace_email1);
-            setTimeout(() => {
-                window.location="forgotPasswordMess.html";
-            }
-                  , 1000);
+            document.getElementById("cuong").style.display = "none";
+            document.getElementById("cuong1").style.display = "block";
         }
     }
           , 800);
