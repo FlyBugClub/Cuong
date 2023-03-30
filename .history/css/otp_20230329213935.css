@@ -87,18 +87,5 @@
 
 .resent-btn button{
   width: 200px;
-  border-radius: 10px;
-  background-color: rgb(167, 48, 69);
-  color: white;
-  font-size: 32px;
-  outline: none;
-  border: rgb(167, 48, 69) 1px solid;
-  transition: all .25s;
-}
-
-.resent-btn button:hover{
-  transform: scale(1.01);
-  color: #dddddd;
-  transition: all .25s;
 }
 

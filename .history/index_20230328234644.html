@@ -78,9 +78,9 @@
                     />
                     
                     <script>
-                      var input = document.getElementById("txtSignInEmail")
-                      input.addEventListener("keypress", function(event) {
-                      if (event.key === "Enter") {
+                      document.getElementById("txtSignInEmail")
+                      .addEventListener("keypress", function(event) {
+                      if (event.keyCode === "Enter") {
                         event.preventDefault();
                         document.getElementById("btn_signin").click();
                         }
@@ -102,34 +102,18 @@
                       />
 
                       <script>
-                        var input = document.getElementById("txtSignInPassword")
-                        input.addEventListener("keypress", function(event) {
-                        if (event.key === "Enter") {
-                          event.preventDefault();
-                          document.getElementById("btn_signin").click();
+                        document.getElementById("txtSignInPassword")
+                        .addEventListener("keyup", function(event) {
+                        event.preventDefault();
+                        if (event.keyCode === 13) {
+                            document.getElementById("btn_signin").click();
                           }
                         });
                       </script>
 
                       <button type="button" class="showPass" ăd>
-                        <i class="fa-solid fa-eye-slash" id="togglePassword"></i>
+                        <i class="fa-solid fa-eye-slash"></i>
                       </button>
-                      <script>
-                        const toggle = document.querySelector("#togglePassword")
-                        const pass = document.querySelector("#txtSignInPassword")
-
-                        toggle.addEventListener("click", function() {
-                          const type = pass.getAttribute("type") === "password" ? "text" : "password";
-                          pass.setAttribute("type", type);
-
-                          this.classList.toggle("bi-eye")
-                        });
-
-                        const form = document.querySelector("form")
-                        form.addEventListener('button', function(e) {
-                          e.preventDefault();
-                        });
-                      </script>
 
                     </div>
                   </td>
@@ -147,7 +131,7 @@
                 <p id="txtSignInNote"></p>
               </div>
               <div class="btn-login">
-                <button id="btn_signin" type="button" onclick = "btnSignIn_Click()">Login</button>
+                <button id="btn_signin" type="button" onclick="javascript:alert('Hello World!')">Login</button>
               </div>
 
               <!-- <input class="btn-signUp" type="button" value="ADD NEW" onclick="printmsg()" /> -->

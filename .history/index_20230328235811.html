@@ -117,18 +117,6 @@
                       <script>
                         const toggle = document.querySelector("#togglePassword")
                         const pass = document.querySelector("#txtSignInPassword")
-
-                        toggle.addEventListener("click", function() {
-                          const type = pass.getAttribute("type") === "password" ? "text" : "password";
-                          pass.setAttribute("type", type);
-
-                          this.classList.toggle("bi-eye")
-                        });
-
-                        const form = document.querySelector("form")
-                        form.addEventListener('button', function(e) {
-                          e.preventDefault();
-                        });
                       </script>
 
                     </div>
